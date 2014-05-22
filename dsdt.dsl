@@ -4795,6 +4795,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                                     Store (ARGS, Debug)
                                     Return (^^IXVE.IGPU.NVIF (FUNC, SUBF, ARGS))
                                 }
+                                Return (Zero)
                             }
                             Name (WQBA, Buffer (0x025D)
                             {
@@ -5604,6 +5605,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                                     }
                                 }
                             }
+                            Return (Zero)
                         }
                         Method (STAD, 2, NotSerialized)
                         {
@@ -5728,6 +5730,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                                     }
                                 }
                             }
+                            Return (Zero)
                         }
                         Method (GLDT, 0, NotSerialized)
                         {
@@ -6048,6 +6051,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                                     }
                                 }
                             }
+                            Return (Zero)
                         }
                         Method (CSE8, 1, NotSerialized)
                         {
@@ -6106,6 +6110,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                                     }
                                 }
                             }
+                            Return (Zero)
                         }
                         Method (BAL8, 1, NotSerialized)
                         {
@@ -6164,6 +6169,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                                     }
                                 }
                             }
+                            Return (Zero)
                         }
                         Method (GTBW, 2, NotSerialized)
                         {
@@ -6887,6 +6893,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                             }
                             Return (Zero)
                         }
+                        Return (Zero)
                     }
                     Method (_DOD, 0, NotSerialized)
                     {
@@ -7150,7 +7157,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                         0x00000011,
                     }
                 })
-                CreateByteField (BUFB, \_SB.LCRS._Y20._INT, AIRQ)
+                CreateDWordField (BUFB, \_SB.LCRS._Y20._INT, AIRQ)
                 Store (Arg0, AIRQ)
                 If (LEqual (Arg0, One))
                 {
@@ -7231,7 +7238,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                         0x00000014,
                     }
                 })
-                CreateByteField (BUFB, \_SB.LCRO._Y21._INT, AIRQ)
+                CreateDWordField (BUFB, \_SB.LCRO._Y21._INT, AIRQ)
                 Store (Arg0, AIRQ)
                 If (LEqual (Arg0, One))
                 {
@@ -8645,7 +8652,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
         Mutex (MUTE, 0x00)
         Method (RBPE, 1, NotSerialized)
         {
-            Acquire (MUTE, 0x03E8)
+            Acquire (MUTE, 0xFFFF)
             Add (Arg0, PCIB, Local0)
             OperationRegion (PCFG, SystemMemory, Local0, One)
             Field (PCFG, ByteAcc, NoLock, Preserve)
@@ -8657,7 +8664,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
         }
         Method (RWPE, 1, NotSerialized)
         {
-            Acquire (MUTE, 0x03E8)
+            Acquire (MUTE, 0xFFFF)
             And (Arg0, 0xFFFFFFFE, Arg0)
             Add (Arg0, PCIB, Local0)
             OperationRegion (PCFG, SystemMemory, Local0, 0x02)
@@ -8670,7 +8677,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
         }
         Method (RDPE, 1, NotSerialized)
         {
-            Acquire (MUTE, 0x03E8)
+            Acquire (MUTE, 0xFFFF)
             And (Arg0, 0xFFFFFFFC, Arg0)
             Add (Arg0, PCIB, Local0)
             OperationRegion (PCFG, SystemMemory, Local0, 0x04)
@@ -8683,7 +8690,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
         }
         Method (WBPE, 2, NotSerialized)
         {
-            Acquire (MUTE, 0x0FFF)
+            Acquire (MUTE, 0xFFFF)
             Add (Arg0, PCIB, Local0)
             OperationRegion (PCFG, SystemMemory, Local0, One)
             Field (PCFG, ByteAcc, NoLock, Preserve)
@@ -8695,7 +8702,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
         }
         Method (WWPE, 2, NotSerialized)
         {
-            Acquire (MUTE, 0x03E8)
+            Acquire (MUTE, 0xFFFF)
             And (Arg0, 0xFFFFFFFE, Arg0)
             Add (Arg0, PCIB, Local0)
             OperationRegion (PCFG, SystemMemory, Local0, 0x02)
@@ -8708,7 +8715,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
         }
         Method (WDPE, 2, NotSerialized)
         {
-            Acquire (MUTE, 0x03E8)
+            Acquire (MUTE, 0xFFFF)
             And (Arg0, 0xFFFFFFFC, Arg0)
             Add (Arg0, PCIB, Local0)
             OperationRegion (PCFG, SystemMemory, Local0, 0x04)
@@ -8721,7 +8728,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
         }
         Method (RWDP, 3, NotSerialized)
         {
-            Acquire (MUTE, 0x03E8)
+            Acquire (MUTE, 0xFFFF)
             And (Arg0, 0xFFFFFFFC, Arg0)
             Add (Arg0, PCIB, Local0)
             OperationRegion (PCFG, SystemMemory, Local0, 0x04)
