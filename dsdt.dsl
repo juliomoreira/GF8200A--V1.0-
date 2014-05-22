@@ -1,23 +1,4 @@
-/*
- * Intel ACPI Component Architecture
- * AML Disassembler version 20111123-32 [Dec  3 2011]
- * Copyright (c) 2000 - 2011 Intel Corporation
- * 
- * Disassembly of /Users/julio/cw_dsdt/dsdt.aml, Thu May 22 19:50:29 2014
- *
- * Original Table Header:
- *     Signature        "DSDT"
- *     Length           0x00008923 (35107)
- *     Revision         0x01 **** 32-bit table (V1), no 64-bit math support
- *     Checksum         0xD1
- *     OEM ID           "1AAAA"
- *     OEM Table ID     "1AAAA000"
- *     OEM Revision     0x00000000 (0)
- *     Compiler ID      "INTL"
- *     Compiler Version 0x20051117 (537202967)
- */
-
-DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
+DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
 {
     Name (DP80, 0x80)
     Name (DP90, 0x90)
@@ -96,17 +77,14 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
         OSTP,   8, 
         HYCM,   8
     }
-
     Method (RRIO, 4, NotSerialized)
     {
         Store ("RRIO", Debug)
     }
-
     Method (RDMA, 3, NotSerialized)
     {
         Store ("rDMA", Debug)
     }
-
     Name (PICM, Zero)
     Method (_PIC, 1, NotSerialized)
     {
@@ -118,10 +96,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
         {
             Store (0xAC, DBG8)
         }
-
         Store (Arg0, PICM)
     }
-
     Name (OSVR, Ones)
     Method (OSFL, 0, NotSerialized)
     {
@@ -129,7 +105,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
         {
             Return (OSVR)
         }
-
         Name (TTT0, Zero)
         Store (OSYS (), TTT0)
         If (LEqual (TTT0, One))
@@ -178,17 +153,14 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 }
             }
         }
-
         Return (OSVR)
     }
-
     Method (MCTH, 2, NotSerialized)
     {
         If (LLess (SizeOf (Arg0), SizeOf (Arg1)))
         {
             Return (Zero)
         }
-
         Add (SizeOf (Arg0), One, Local0)
         Name (BUF0, Buffer (Local0) {})
         Name (BUF1, Buffer (Local0) {})
@@ -203,10 +175,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 Return (Zero)
             }
         }
-
         Return (One)
     }
-
     Name (PRWP, Package (0x02)
     {
         Zero, 
@@ -235,10 +205,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 FindSetRightBit (Local0, Index (PRWP, One))
             }
         }
-
         Return (PRWP)
     }
-
     Name (WAKP, Package (0x02)
     {
         Zero, 
@@ -249,13 +217,11 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
     {
         DBG8,   8
     }
-
     OperationRegion (DEB1, SystemIO, DP90, 0x02)
     Field (DEB1, WordAcc, NoLock, Preserve)
     {
         DBG9,   16
     }
-
     Method (OSYS, 0, NotSerialized)
     {
         Store (0x10, Local0)
@@ -265,32 +231,26 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Store (0x12, Local0)
             }
-
             If (_OSI ("Windows 2001"))
             {
                 Store (0x13, Local0)
             }
-
             If (_OSI ("Windows 2001 SP1"))
             {
                 Store (0x13, Local0)
             }
-
             If (_OSI ("Windows 2001 SP2"))
             {
                 Store (0x13, Local0)
             }
-
             If (_OSI ("Windows 2001.1"))
             {
                 Store (0x14, Local0)
             }
-
             If (_OSI ("Windows 2001.1 SP1"))
             {
                 Store (0x14, Local0)
             }
-
             If (_OSI ("Windows 2006"))
             {
                 Store (0x15, Local0)
@@ -310,18 +270,28 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 }
             }
         }
-
         Return (Local0)
     }
-
     Scope (_PR)
     {
-        Processor (P001, 0x01, 0x00002010, 0x06) {}
-        Processor (P002, 0x02, 0x00000000, 0x00) {}
-        Processor (P003, 0x03, 0x00000000, 0x00) {}
-        Processor (P004, 0x04, 0x00000000, 0x00) {}
-        Processor (P005, 0x05, 0x00000000, 0x00) {}
-        Processor (P006, 0x06, 0x00000000, 0x00) {}
+        Processor (P001, 0x01, 0x00002010, 0x06)
+        {
+        }
+        Processor (P002, 0x02, 0x00000000, 0x00)
+        {
+        }
+        Processor (P003, 0x03, 0x00000000, 0x00)
+        {
+        }
+        Processor (P004, 0x04, 0x00000000, 0x00)
+        {
+        }
+        Processor (P005, 0x05, 0x00000000, 0x00)
+        {
+        }
+        Processor (P006, 0x06, 0x00000000, 0x00)
+        {
+        }
         Alias (P001, CPU1)
         Alias (P002, CPU2)
         Alias (P003, CPU3)
@@ -329,7 +299,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
         Alias (P005, CPU5)
         Alias (P006, CPU6)
     }
-
     Scope (_SB)
     {
         Name (PR00, Package (0x2A)
@@ -341,7 +310,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LSMB, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -349,7 +317,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LPMU, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -357,7 +324,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LUB0, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -365,7 +331,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LUB2, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -373,7 +338,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 UB11, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -381,7 +345,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 UB12, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x000AFFFF, 
@@ -389,7 +352,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LMAC, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0009FFFF, 
@@ -397,7 +359,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LSA0, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0007FFFF, 
@@ -405,7 +366,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LAZA, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x000BFFFF, 
@@ -413,7 +373,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 SGRU, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0010FFFF, 
@@ -421,7 +380,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN0A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0010FFFF, 
@@ -429,7 +387,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN0B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0010FFFF, 
@@ -437,7 +394,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN0C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0010FFFF, 
@@ -445,7 +401,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN0D, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0011FFFF, 
@@ -453,7 +408,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN1A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0011FFFF, 
@@ -461,7 +415,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN1B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0011FFFF, 
@@ -469,7 +422,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN1C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0011FFFF, 
@@ -477,7 +429,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN1D, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0012FFFF, 
@@ -485,7 +436,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN2A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0012FFFF, 
@@ -493,7 +443,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN2B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0012FFFF, 
@@ -501,7 +450,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN2C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0012FFFF, 
@@ -509,7 +457,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN2D, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0013FFFF, 
@@ -517,7 +464,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN3A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0013FFFF, 
@@ -525,7 +471,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN3B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0013FFFF, 
@@ -533,7 +478,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN3C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0013FFFF, 
@@ -541,7 +485,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN3D, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0014FFFF, 
@@ -549,7 +492,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN4A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0014FFFF, 
@@ -557,7 +499,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN4B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0014FFFF, 
@@ -565,7 +506,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN4C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0014FFFF, 
@@ -573,7 +513,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN4D, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0015FFFF, 
@@ -581,7 +520,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN5A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0015FFFF, 
@@ -589,7 +527,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN5B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0015FFFF, 
@@ -597,7 +534,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN5C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0015FFFF, 
@@ -605,7 +541,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN5D, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -613,7 +548,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN6A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -621,7 +555,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN6B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -629,7 +562,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN6C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -637,7 +569,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN6D, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0017FFFF, 
@@ -645,7 +576,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN7A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0017FFFF, 
@@ -653,7 +583,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN7B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0017FFFF, 
@@ -661,7 +590,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN7C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0017FFFF, 
@@ -679,7 +607,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LSMB, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0001FFFF, 
@@ -687,7 +614,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LPMU, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -695,7 +621,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LUB0, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0002FFFF, 
@@ -703,7 +628,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LUB2, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -711,7 +635,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 UB11, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -719,7 +642,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 UB12, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x000AFFFF, 
@@ -727,7 +649,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LMAC, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0009FFFF, 
@@ -735,7 +656,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LSA0, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0007FFFF, 
@@ -743,7 +663,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LAZA, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x000BFFFF, 
@@ -751,7 +670,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 SGRU, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0010FFFF, 
@@ -759,7 +677,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN0A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0010FFFF, 
@@ -767,7 +684,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN0B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0010FFFF, 
@@ -775,7 +691,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN0C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0010FFFF, 
@@ -783,7 +698,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN0D, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0011FFFF, 
@@ -791,7 +705,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN1A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0011FFFF, 
@@ -799,7 +712,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN1B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0011FFFF, 
@@ -807,7 +719,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN1C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0011FFFF, 
@@ -815,7 +726,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN1D, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0012FFFF, 
@@ -823,7 +733,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN2A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0012FFFF, 
@@ -831,7 +740,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN2B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0012FFFF, 
@@ -839,7 +747,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN2C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0012FFFF, 
@@ -847,7 +754,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN2D, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0013FFFF, 
@@ -855,7 +761,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN3A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0013FFFF, 
@@ -863,7 +768,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN3B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0013FFFF, 
@@ -871,7 +775,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN3C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0013FFFF, 
@@ -879,7 +782,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN3D, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0014FFFF, 
@@ -887,7 +789,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN4A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0014FFFF, 
@@ -895,7 +796,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN4B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0014FFFF, 
@@ -903,7 +803,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN4C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0014FFFF, 
@@ -911,7 +810,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN4D, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0015FFFF, 
@@ -919,7 +817,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN5A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0015FFFF, 
@@ -927,7 +824,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN5B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0015FFFF, 
@@ -935,7 +831,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN5C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0015FFFF, 
@@ -943,7 +838,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN5D, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -951,7 +845,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN6A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -959,7 +852,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN6B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -967,7 +859,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN6C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0016FFFF, 
@@ -975,7 +866,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN6D, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0017FFFF, 
@@ -983,7 +873,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN7A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0017FFFF, 
@@ -991,7 +880,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN7B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0017FFFF, 
@@ -999,7 +887,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN7C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0017FFFF, 
@@ -1037,7 +924,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN0A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1045,7 +931,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN0B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1053,7 +938,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN0C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1071,7 +955,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN0A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1079,7 +962,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN0B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1087,7 +969,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN0C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1105,7 +986,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN1A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1113,7 +993,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN1B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1121,7 +1000,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN1C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1139,7 +1017,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN1A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1147,7 +1024,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN1B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1155,7 +1031,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN1C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1173,7 +1048,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN2A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1181,7 +1055,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN2B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1189,7 +1062,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN2C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1207,7 +1079,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN2A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1215,7 +1086,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN2B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1223,7 +1093,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN2C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1241,7 +1110,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN3A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1249,7 +1117,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN3B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1257,7 +1124,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN3C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1275,7 +1141,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN3A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1283,7 +1148,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN3B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1291,7 +1155,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN3C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1309,7 +1172,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN4A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1317,7 +1179,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN4B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1325,7 +1186,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN4C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1343,7 +1203,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN4A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1351,7 +1210,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN4B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1359,7 +1217,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN4C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1377,7 +1234,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN5A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1385,7 +1241,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN5B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1393,7 +1248,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN5C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1411,7 +1265,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN5A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1419,7 +1272,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN5B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1427,7 +1279,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN5C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1445,7 +1296,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN6A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1453,7 +1303,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN6B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1461,7 +1310,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN6C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1479,7 +1327,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN6A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1487,7 +1334,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN6B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1495,7 +1341,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN6C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1513,7 +1358,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN7A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1521,7 +1365,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN7B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1529,7 +1372,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN7C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1547,7 +1389,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN7A, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1555,7 +1396,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN7B, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1563,7 +1403,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LN7C, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0xFFFF, 
@@ -1581,7 +1420,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKA, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -1589,7 +1427,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKB, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -1597,7 +1434,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKC, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -1605,7 +1441,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKD, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1613,7 +1448,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKB, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1621,7 +1455,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKC, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1629,7 +1462,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKD, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1637,7 +1469,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKA, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -1645,7 +1476,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKC, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -1653,7 +1483,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKD, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -1661,7 +1490,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKA, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -1679,7 +1507,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKA, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -1687,7 +1514,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKB, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -1695,7 +1521,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKC, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0004FFFF, 
@@ -1703,7 +1528,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKD, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1711,7 +1535,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKB, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1719,7 +1542,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKC, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1727,7 +1549,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKD, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0005FFFF, 
@@ -1735,7 +1556,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKA, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -1743,7 +1563,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKC, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -1751,7 +1570,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKD, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -1759,7 +1577,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 LNKA, 
                 Zero
             }, 
-
             Package (0x04)
             {
                 0x0006FFFF, 
@@ -1858,12 +1675,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (Zero)
             }
-
             Method (_BBN, 0, NotSerialized)
             {
                 Return (BN00 ())
             }
-
             Name (_UID, Zero)
             Method (_PRT, 0, NotSerialized)
             {
@@ -1871,18 +1686,14 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     Return (AR00)
                 }
-
                 Return (PR00)
             }
-
             Method (NPTS, 1, NotSerialized)
             {
             }
-
             Method (NWAK, 1, NotSerialized)
             {
             }
-
             Device (SBRG)
             {
                 Name (_ADR, 0x00010000)
@@ -1898,7 +1709,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     Store (One, PS1S)
                     Store (One, PS1E)
                 }
-
                 Method (SWAK, 1, NotSerialized)
                 {
                     Store (Zero, PS1E)
@@ -1907,7 +1717,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     Store (0x02, S4CT)
                     Store (0x02, S5CT)
                 }
-
                 OperationRegion (SMIE, SystemIO, SCIO, 0x08)
                 Field (SMIE, ByteAcc, NoLock, Preserve)
                 {
@@ -1917,7 +1726,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     PS1E,   1, 
                     Offset (0x08)
                 }
-
                 OperationRegion (SXCT, SystemIO, SCTL, 0x10)
                 Field (SXCT, ByteAcc, NoLock, Preserve)
                 {
@@ -1930,7 +1738,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     S5CT,   2, 
                     Offset (0x10)
                 }
-
                 OperationRegion (GPB0, SystemIO, GPBS, 0x28)
                 Field (GPB0, ByteAcc, NoLock, Preserve)
                 {
@@ -1975,7 +1782,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     GP39,   8, 
                     GP40,   8
                 }
-
                 OperationRegion (MM90, SystemMemory, 0xE0080000, 0xFF)
                 Field (MM90, AnyAcc, NoLock, Preserve)
                 {
@@ -1987,20 +1793,17 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         ,   1, 
                     SDLA,   1
                 }
-
                 OperationRegion (RTCO, SystemIO, 0x72, 0x02)
                 Field (RTCO, ByteAcc, NoLock, Preserve)
                 {
                     CIND,   8, 
                     CDAT,   8
                 }
-
                 IndexField (CIND, CDAT, ByteAcc, NoLock, Preserve)
                 {
                     Offset (0xD0), 
                     CMO1,   4
                 }
-
                 Scope (\_SB)
                 {
                     OperationRegion (\SCPP, SystemIO, SSMI, One)
@@ -2008,7 +1811,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         SMIP,   8
                     }
-
                     Scope (PCI0)
                     {
                         Method (_S3D, 0, NotSerialized)
@@ -2022,7 +1824,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 Return (0x03)
                             }
                         }
-
                         Name (_S1D, One)
                         Name (NATA, Package (0x01)
                         {
@@ -2030,18 +1831,16 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         })
                         Device (NVRB)
                         {
-                            Name (_HID, "NVRAID20")
+                            Name (_HID, "NVRD0001")
                             Name (FNVR, 0xFF)
                             Method (_DIS, 0, NotSerialized)
                             {
                                 Store (Zero, FNVR)
                             }
-
                             Method (_SRS, 1, NotSerialized)
                             {
                                 Store (0xFF, FNVR)
                             }
-
                             Method (_STA, 0, NotSerialized)
                             {
                                 If (And (CPB0, One))
@@ -2060,7 +1859,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                     Return (Zero)
                                 }
                             }
-
                             Name (_CRS, ResourceTemplate ()
                             {
                                 IO (Decode16,
@@ -2073,13 +1871,11 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         }
                     }
                 }
-
                 OperationRegion (UCFG, PCI_Config, 0x78, One)
                 Field (UCFG, ByteAcc, NoLock, Preserve)
                 {
                     U1CF,   8
                 }
-
                 Device (MUAR)
                 {
                     Name (_UID, 0xFF)
@@ -2094,10 +1890,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 Return (0x0F)
                             }
                         }
-
                         Return (Zero)
                     }
-
                     Method (_CRS, 0, NotSerialized)
                     {
                         If (LEqual (U1CF, 0xC2))
@@ -2106,18 +1900,15 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             ShiftLeft (One, 0x04, UIRQ)
                             Store (One, _UID)
                         }
-
                         If (LEqual (U1CF, 0xA6))
                         {
                             Store (0x02F8, UIO1)
                             ShiftLeft (One, 0x03, UIRQ)
                             Store (0x02, _UID)
                         }
-
                         Store (UIO1, UIO2)
                         Return (UCRS)
                     }
-
                     Name (UCRS, ResourceTemplate ()
                     {
                         IO (Decode16,
@@ -2135,7 +1926,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     CreateWordField (UCRS, \_SB.PCI0.SBRG.MUAR._Y01._MIN, UIO1)
                     CreateWordField (UCRS, \_SB.PCI0.SBRG.MUAR._Y01._MAX, UIO2)
                 }
-
                 Device (PIC)
                 {
                     Name (_HID, EisaId ("PNP0000"))
@@ -2157,7 +1947,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             {2}
                     })
                 }
-
                 Device (DMAD)
                 {
                     Name (_HID, EisaId ("PNP0200"))
@@ -2203,7 +1992,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             )
                     })
                 }
-
                 Device (SPKR)
                 {
                     Name (_HID, EisaId ("PNP0800"))
@@ -2217,7 +2005,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             )
                     })
                 }
-
                 Device (COPR)
                 {
                     Name (_HID, EisaId ("PNP0C04"))
@@ -2233,7 +2020,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             {13}
                     })
                 }
-
                 Device (UAR1)
                 {
                     Name (_UID, One)
@@ -2242,27 +2028,22 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         Return (DSTA (Zero))
                     }
-
                     Method (_DIS, 0, NotSerialized)
                     {
                         DCNT (Zero, Zero)
                     }
-
                     Method (_CRS, 0, NotSerialized)
                     {
                         Return (DCRS (Zero, Zero))
                     }
-
                     Method (_SRS, 1, NotSerialized)
                     {
                         DSRS (Arg0, Zero)
                     }
-
                     Method (_PRS, 0, NotSerialized)
                     {
                         Return (CMPR)
                     }
-
                     Name (CMPR, ResourceTemplate ()
                     {
                         StartDependentFn (0x00, 0x00)
@@ -2333,7 +2114,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         EndDependentFn ()
                     })
                 }
-
                 Device (UAR2)
                 {
                     Name (_UID, 0x02)
@@ -2341,32 +2121,26 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         Return (UHID (One))
                     }
-
                     Method (_STA, 0, NotSerialized)
                     {
                         Return (DSTA (One))
                     }
-
                     Method (_DIS, 0, NotSerialized)
                     {
                         DCNT (One, Zero)
                     }
-
                     Method (_CRS, 0, NotSerialized)
                     {
                         Return (DCRS (One, One))
                     }
-
                     Method (_SRS, 1, NotSerialized)
                     {
                         DSRS (Arg0, One)
                     }
-
                     Method (_PRS, 0, NotSerialized)
                     {
                         Return (CMPR)
                     }
-
                     Name (CMPR, ResourceTemplate ()
                     {
                         StartDependentFn (0x00, 0x00)
@@ -2489,7 +2263,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         EndDependentFn ()
                     })
                 }
-
                 Device (FDC)
                 {
                     Name (_HID, EisaId ("PNP0700"))
@@ -2507,20 +2280,16 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         {
                             Store (One, Index (FDEP, Zero))
                         }
-
                         Return (FDEP)
                     }
-
                     Method (_STA, 0, NotSerialized)
                     {
                         Return (DSTA (0x03))
                     }
-
                     Method (_DIS, 0, NotSerialized)
                     {
                         DCNT (0x03, Zero)
                     }
-
                     Method (_CRS, 0, NotSerialized)
                     {
                         DCRS (0x03, One)
@@ -2534,7 +2303,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Store (One, LEN3)
                         Return (CRS2)
                     }
-
                     Method (_SRS, 1, NotSerialized)
                     {
                         DSRS (Arg0, 0x03)
@@ -2550,7 +2318,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         {
                             Store (Zero, INTR)
                         }
-
                         If (DMAE)
                         {
                             FindSetRightBit (DMAE, Local0)
@@ -2560,10 +2327,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         {
                             Store (0x04, DMCH)
                         }
-
                         EXFG ()
                     }
-
                     Name (_PRS, ResourceTemplate ()
                     {
                         StartDependentFn (0x00, 0x00)
@@ -2626,7 +2391,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         EndDependentFn ()
                     })
                 }
-
                 Device (LPTE)
                 {
                     Method (_HID, 0, NotSerialized)
@@ -2640,17 +2404,14 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Return (0x0004D041)
                         }
                     }
-
                     Method (_STA, 0, NotSerialized)
                     {
                         Return (DSTA (0x02))
                     }
-
                     Method (_DIS, 0, NotSerialized)
                     {
                         DCNT (0x02, Zero)
                     }
-
                     Method (_CRS, 0, NotSerialized)
                     {
                         DCRS (0x02, One)
@@ -2671,12 +2432,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Return (CRS1)
                         }
                     }
-
                     Method (_SRS, 1, NotSerialized)
                     {
                         DSRS (Arg0, 0x02)
                     }
-
                     Method (_PRS, 0, NotSerialized)
                     {
                         If (LPTM (0x02))
@@ -2688,7 +2447,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Return (LPPR)
                         }
                     }
-
                     Name (LPPR, ResourceTemplate ()
                     {
                         StartDependentFnNoPri ()
@@ -2813,7 +2571,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         EndDependentFn ()
                     })
                 }
-
                 Device (RMSC)
                 {
                     Name (_HID, EisaId ("PNP0C02"))
@@ -3011,7 +2768,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         {
                             Store (PMLN, GP0L)
                         }
-
                         If (SCBS)
                         {
                             CreateWordField (CRS, \_SB.PCI0.SBRG.RMSC._Y04._MIN, SC00)
@@ -3034,7 +2790,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 Store (SCLN, SC0L)
                             }
                         }
-
                         If (ACBS)
                         {
                             CreateWordField (CRS, \_SB.PCI0.SBRG.RMSC._Y06._MIN, AC00)
@@ -3057,7 +2812,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 Store (ACLN, AC0L)
                             }
                         }
-
                         If (SPAS)
                         {
                             CreateDWordField (CRS, \_SB.PCI0.SBRG.RMSC._Y08._BAS, BB01)
@@ -3065,7 +2819,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Store (SPAM, BB01)
                             Store (SPAL, BL01)
                         }
-
                         If (SNAS)
                         {
                             CreateDWordField (CRS, \_SB.PCI0.SBRG.RMSC._Y09._BAS, AB01)
@@ -3073,7 +2826,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Store (SNAM, AB01)
                             Store (SNAL, AL01)
                         }
-
                         CreateDWordField (CRS, \_SB.PCI0.SBRG.RMSC._Y0A._BAS, MB01)
                         CreateDWordField (CRS, \_SB.PCI0.SBRG.RMSC._Y0A._LEN, ML01)
                         Store (CPB1, MB01)
@@ -3081,7 +2833,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Return (CRS)
                     }
                 }
-
                 Device (HPET)
                 {
                     Name (_HID, EisaId ("PNP0103"))
@@ -3118,7 +2869,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Return (Zero)
                         }
                     }
-
                     Method (_CRS, 0, NotSerialized)
                     {
                         CreateDWordField (CRS1, \_SB.PCI0.SBRG.HPET._Y0B._BAS, HPX1)
@@ -3131,7 +2881,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             {
                                 Store (0x02, Local0)
                             }
-
                             ShiftLeft (One, Local0, TIRQ)
                             Store (SHPB, HPX1)
                             Store (SHPL, HPX2)
@@ -3142,7 +2891,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Return (CRS0)
                         }
                     }
-
                     OperationRegion (CF29, PCI_Config, 0x74, One)
                     Field (CF29, ByteAcc, NoLock, Preserve)
                     {
@@ -3150,7 +2898,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             ,   1, 
                         P2IR,   1
                     }
-
                     OperationRegion (HPTE, SystemMemory, SHPB, 0x04)
                     Field (HPTE, ByteAcc, NoLock, Preserve)
                     {
@@ -3158,7 +2905,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         NVID,   16
                     }
                 }
-
                 OperationRegion (LPDC, PCI_Config, 0xA0, 0x06)
                 Field (LPDC, ByteAcc, NoLock, Preserve)
                 {
@@ -3182,7 +2928,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     G200,   8, 
                     G208,   8
                 }
-
                 Method (RRIO, 4, NotSerialized)
                 {
                     If (LOr (LEqual (Arg0, Zero), LEqual (Arg0, One)))
@@ -3191,59 +2936,49 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         {
                             Store (Arg1, S3F8)
                         }
-
                         If (LEqual (Arg2, 0x02F8))
                         {
                             Store (Arg1, S2F8)
                         }
-
                         If (LEqual (Arg2, 0x03E8))
                         {
                             Store (Arg1, S3E8)
                         }
-
                         If (LEqual (Arg2, 0x02E8))
                         {
                             Store (Arg1, S2E8)
                         }
                     }
-
                     If (LEqual (Arg0, 0x02))
                     {
                         If (LEqual (Arg2, 0x0378))
                         {
                             Store (Arg1, P378)
                         }
-
                         If (LEqual (Arg2, 0x0278))
                         {
                             Store (Arg1, P278)
                         }
-
                         If (LEqual (Arg2, 0x03BC))
                         {
                             Store (Arg1, P3BC)
                         }
                     }
-
                     If (LEqual (Arg0, 0x03))
                     {
                         Store (Arg1, FDC0)
                     }
-
                     If (LEqual (Arg0, 0x05))
                     {
                         If (LEqual (Arg2, 0x0330))
                         {
                             Store (Arg1, M330)
                         }
-
                         If (LEqual (Arg2, 0x0300))
                         {
                             Store (Arg1, M300)
                         }
                     }
-
                     If (LEqual (Arg0, 0x08))
                     {
                         Store (Zero, Local0)
@@ -3251,23 +2986,19 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         {
                             Store (0xFF, Local0)
                         }
-
                         If (LEqual (Arg2, 0x0200))
                         {
                             Store (Local0, G200)
                         }
-
                         If (LEqual (Arg2, 0x0208))
                         {
                             Store (Local0, G208)
                         }
                     }
                 }
-
                 Method (RDMA, 3, NotSerialized)
                 {
                 }
-
                 Device (TMR)
                 {
                     Name (_HID, EisaId ("PNP0100"))
@@ -3297,11 +3028,9 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         {
                             Return (CRS1)
                         }
-
                         Return (CRS0)
                     }
                 }
-
                 Device (RTC0)
                 {
                     Name (_HID, EisaId ("PNP0B00"))
@@ -3331,11 +3060,9 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         {
                             Return (CRS1)
                         }
-
                         Return (CRS0)
                     }
                 }
-
                 Device (^PCIE)
                 {
                     Name (_HID, EisaId ("PNP0C02"))
@@ -3356,7 +3083,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Return (CRS)
                     }
                 }
-
                 Device (OMSC)
                 {
                     Name (_HID, EisaId ("PNP0C02"))
@@ -3412,7 +3138,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Store (0xFEE00000, MB04)
                             Store (0x1000, ML04)
                         }
-
                         ShiftLeft (0x05, 0x0A, Local0)
                         If (And (IOST, Local0))
                         {
@@ -3424,7 +3149,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         }
                     }
                 }
-
                 Device (^^RMEM)
                 {
                     Name (_HID, EisaId ("PNP0C01"))
@@ -3477,21 +3201,18 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 Store (0x000C0000, BAS1)
                                 Store (0x00020000, LEN1)
                             }
-
                             If (Add (MG1B, MG1L, Local0))
                             {
                                 Store (Local0, BAS2)
                                 Subtract (0x00100000, BAS2, LEN2)
                             }
                         }
-
                         Subtract (MG2B, 0x00100000, LEN3)
                         Store (MH1B, BAS4)
                         Subtract (Zero, BAS4, LEN4)
                         Return (CRS)
                     }
                 }
-
                 Device (PS2K)
                 {
                     Name (_HID, EisaId ("PNP0303"))
@@ -3503,10 +3224,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         {
                             Return (0x0F)
                         }
-
                         Return (Zero)
                     }
-
                     Name (_CRS, ResourceTemplate ()
                     {
                         IO (Decode16,
@@ -3525,12 +3244,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             {1}
                     })
                 }
-
                 Method (PS2K._PRW, 0, NotSerialized)
                 {
                     Return (GPRW (0x10, 0x04))
                 }
-
                 Device (PS2M)
                 {
                     Name (_HID, EisaId ("PNP0F03"))
@@ -3542,10 +3259,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         {
                             Return (0x0F)
                         }
-
                         Return (Zero)
                     }
-
                     Name (M2R0, ResourceTemplate ()
                     {
                         IRQNoFlags ()
@@ -3577,12 +3292,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         }
                     }
                 }
-
                 Method (PS2M._PRW, 0, NotSerialized)
                 {
                     Return (GPRW (0x10, 0x04))
                 }
-
                 Device (SIOR)
                 {
                     Name (_HID, EisaId ("PNP0C02"))
@@ -3590,7 +3303,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         Return (SPIO)
                     }
-
                     Name (CRS, ResourceTemplate ()
                     {
                         IO (Decode16,
@@ -3623,7 +3335,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Store (SPIO, GP11)
                             Store (0x02, GPL1)
                         }
-
                         If (IOSB)
                         {
                             CreateWordField (CRS, \_SB.PCI0.SBRG.SIOR._Y17._MIN, GP20)
@@ -3633,7 +3344,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Store (IOSB, GP21)
                             Store (IOSL, GPL2)
                         }
-
                         If (IOHB)
                         {
                             CreateWordField (CRS, \_SB.PCI0.SBRG.SIOR._Y18._MIN, GP30)
@@ -3643,11 +3353,9 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Store (IOHB, GP31)
                             Store (IOHL, GPL3)
                         }
-
                         Return (CRS)
                     }
                 }
-
                 Name (DCAT, Package (0x16)
                 {
                     0x02, 
@@ -3679,12 +3387,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     Store (0x87, INDX)
                     Store (Arg0, LDN)
                 }
-
                 Method (EXFG, 0, NotSerialized)
                 {
                     Store (0xAA, INDX)
                 }
-
                 Method (LPTM, 1, NotSerialized)
                 {
                     ENFG (CGLD (Arg0))
@@ -3692,7 +3398,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     EXFG ()
                     Return (Local0)
                 }
-
                 Method (UHID, 1, NotSerialized)
                 {
                     If (LEqual (Arg0, One))
@@ -3705,10 +3410,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Return (0x1005D041)
                         }
                     }
-
                     Return (0x0105D041)
                 }
-
                 Method (SIOK, 1, NotSerialized)
                 {
                     ENFG (0x0A)
@@ -3718,7 +3421,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     Store (And (Arg0, One), ACTR)
                     EXFG ()
                 }
-
                 Name (KBFG, One)
                 Name (MSFG, One)
                 Name (U1FG, One)
@@ -3730,7 +3432,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     Offset (0x04), 
                     KP64,   8
                 }
-
                 OperationRegion (KB64, SystemIO, 0x64, One)
                 Field (KB64, ByteAcc, NoLock, Preserve)
                 {
@@ -3738,7 +3439,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     KRDY,   1, 
                     Offset (0x01)
                 }
-
                 Method (PS2K._PSW, 1, NotSerialized)
                 {
                     If (LNot (LOr (LEqual (OSFL (), One), LEqual (OSFL (), 0x02))))
@@ -3753,7 +3453,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         }
                     }
                 }
-
                 Method (PS2M._PSW, 1, NotSerialized)
                 {
                     If (LNot (LOr (LEqual (OSFL (), One), LEqual (OSFL (), 0x02))))
@@ -3768,7 +3467,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         }
                     }
                 }
-
                 Method (SIOS, 1, NotSerialized)
                 {
                     Store ("SIOS", Debug)
@@ -3781,15 +3479,12 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         {
                             Or (OPT6, 0x10, OPT6)
                         }
-
                         If (MSFG)
                         {
                             Or (OPT6, 0x20, OPT6)
                         }
-
                         EXFG ()
                     }
-
                     If (LOr (LEqual (Arg0, 0x03), LEqual (Arg0, 0x04)))
                     {
                         If (WKTP)
@@ -3800,12 +3495,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             {
                                 Or (OPT6, 0x10, OPT6)
                             }
-
                             If (MSFG)
                             {
                                 Or (OPT6, 0x20, OPT6)
                             }
-
                             EXFG ()
                         }
                         Else
@@ -3815,18 +3508,15 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             {
                                 Or (CRE0, 0x41, CRE0)
                             }
-
                             If (MSFG)
                             {
                                 Or (CRE0, 0x22, CRE0)
                                 Or (CRE6, 0x80, CRE6)
                             }
-
                             EXFG ()
                         }
                     }
                 }
-
                 Method (SIOW, 1, NotSerialized)
                 {
                     If (LEqual (Arg0, One))
@@ -3836,7 +3526,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Store (Zero, OPT5)
                         EXFG ()
                     }
-
                     Store ("SIOW", Debug)
                     SIOK (Zero)
                     ENFG (0x0A)
@@ -3846,7 +3535,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     And (CRE6, 0x7F, CRE6)
                     EXFG ()
                 }
-
                 Method (SIOH, 0, NotSerialized)
                 {
                     Store ("SIOH", Debug)
@@ -3855,22 +3543,18 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         Notify (PS2K, 0x02)
                     }
-
                     If (And (OPT3, 0x20))
                     {
                         Notify (PS2M, 0x02)
                     }
-
                     SIOK (Zero)
                 }
-
                 OperationRegion (IOID, SystemIO, SPIO, 0x02)
                 Field (IOID, ByteAcc, NoLock, Preserve)
                 {
                     INDX,   8, 
                     DATA,   8
                 }
-
                 IndexField (INDX, DATA, ByteAcc, NoLock, Preserve)
                 {
                     Offset (0x07), 
@@ -3909,12 +3593,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     OPT5,   8, 
                     OPT6,   8
                 }
-
                 Method (CGLD, 1, NotSerialized)
                 {
                     Return (DerefOf (Index (DCAT, Arg0)))
                 }
-
                 Method (DSTA, 1, NotSerialized)
                 {
                     ENFG (CGLD (Arg0))
@@ -3924,7 +3606,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         Return (Zero)
                     }
-
                     And (Local0, One, Local0)
                     Or (IOST, ShiftLeft (Local0, Arg0), IOST)
                     If (Local0)
@@ -3943,7 +3624,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         }
                     }
                 }
-
                 Method (DCNT, 2, NotSerialized)
                 {
                     ENFG (CGLD (Arg0))
@@ -3954,12 +3634,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         RDMA (Arg0, Arg1, Increment (Local1))
                     }
-
                     Store (Arg1, ACTR)
                     RRIO (Arg0, Arg1, Local1, 0x08)
                     EXFG ()
                 }
-
                 Name (CRS1, ResourceTemplate ()
                 {
                     IO (Decode16,
@@ -4021,7 +3699,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         Store (Zero, IRQM)
                     }
-
                     If (LOr (LGreater (DMCH, 0x03), LEqual (Arg1, Zero)))
                     {
                         Store (Zero, DMAM)
@@ -4031,11 +3708,9 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         And (DMCH, 0x03, Local1)
                         ShiftLeft (One, Local1, DMAM)
                     }
-
                     EXFG ()
                     Return (CRS1)
                 }
-
                 Method (DSRS, 2, NotSerialized)
                 {
                     CreateWordField (Arg0, 0x09, IRQM)
@@ -4057,7 +3732,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         Store (Zero, INTR)
                     }
-
                     If (DMAM)
                     {
                         FindSetRightBit (DMAM, Local0)
@@ -4067,12 +3741,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         Store (0x04, DMCH)
                     }
-
                     EXFG ()
                     DCNT (Arg1, One)
                 }
             }
-
             Device (SMB0)
             {
                 Name (_ADR, 0x00010001)
@@ -4082,7 +3754,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     SB1,    32, 
                     SB2,    32
                 }
-
                 OperationRegion (SMCF, PCI_Config, 0x48, 0x10)
                 Field (SMCF, DWordAcc, NoLock, Preserve)
                 {
@@ -4090,19 +3761,16 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     SMT1,   28, 
                     SMT2,   32
                 }
-
                 OperationRegion (SME4, PCI_Config, 0xE4, 0x04)
                 Field (SME4, AnyAcc, NoLock, Preserve)
                 {
                         ,   17, 
                     XPME,   1
                 }
-
                 Method (GPMD, 1, NotSerialized)
                 {
                     Store (Arg0, XPME)
                 }
-
                 Method (SMBB, 1, NotSerialized)
                 {
                     If (LEqual (Arg0, Zero))
@@ -4113,10 +3781,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         And (SB2, 0xFFFE, Local0)
                     }
-
                     Return (Local0)
                 }
-
                 Scope (^^PCI0)
                 {
                     OperationRegion (SM00, SystemIO, SMB0.SMBB (One), 0x40)
@@ -4133,13 +3799,11 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         ALDL,   8, 
                         ALDH,   8
                     }
-
                     Field (SM00, ByteAcc, NoLock, Preserve)
                     {
                         Offset (0x04), 
                         SB32,   256
                     }
-
                     Method (SWFS, 0, NotSerialized)
                     {
                         Store (0x0A, Local0)
@@ -4149,12 +3813,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             {
                                 Break
                             }
-
                             Sleep (One)
                             Decrement (Local0)
                         }
                     }
-
                     Method (SRBY, 2, NotSerialized)
                     {
                         Store (Arg0, ADDR)
@@ -4162,7 +3824,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Store (0x04, CTLR)
                         SWFS ()
                     }
-
                     Method (WBYT, 3, NotSerialized)
                     {
                         Store (Arg0, ADDR)
@@ -4171,7 +3832,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Store (0x06, CTLR)
                         SWFS ()
                     }
-
                     Method (CLAR, 0, NotSerialized)
                     {
                         And (HSTS, 0x40, Local0)
@@ -4183,10 +3843,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Store (Zero, HSTS)
                             Stall (0x64)
                         }
-
                         SWFS ()
                     }
-
                     Method (SMWW, 4, NotSerialized)
                     {
                         Store (Arg0, ADDR)
@@ -4196,7 +3854,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Store (0x08, CTLR)
                         SWFS ()
                     }
-
                     Method (RBYT, 2, NotSerialized)
                     {
                         Store (Arg0, ADDR)
@@ -4205,7 +3862,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         SWFS ()
                         Return (DAT0)
                     }
-
                     Method (SMRW, 2, NotSerialized)
                     {
                         Store (Arg0, ADDR)
@@ -4217,7 +3873,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Or (Local0, Local1, Local2)
                         Return (Local2)
                     }
-
                     Method (SMRB, 2, NotSerialized)
                     {
                         Store (Arg0, ADDR)
@@ -4227,13 +3882,11 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Return (SB32)
                     }
                 }
-
                 Method (_PRW, 0, NotSerialized)
                 {
                     Return (GPRW (0x09, 0x04))
                 }
             }
-
             Device (IMAP)
             {
                 Name (_ADR, 0x00010004)
@@ -4304,7 +3957,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     XVE7,   8
                 }
             }
-
             Device (USB0)
             {
                 Name (_ADR, 0x00020000)
@@ -4320,13 +3972,11 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Return (0x03)
                     }
                 }
-
                 Method (_PRW, 0, NotSerialized)
                 {
                     Return (GPRW (0x0D, 0x04))
                 }
             }
-
             Device (USB2)
             {
                 Name (_ADR, 0x00020001)
@@ -4342,13 +3992,11 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Return (0x03)
                     }
                 }
-
                 Method (_PRW, 0, NotSerialized)
                 {
                     Return (GPRW (0x05, 0x03))
                 }
             }
-
             Device (US15)
             {
                 Name (_ADR, 0x00040000)
@@ -4364,13 +4012,11 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Return (0x03)
                     }
                 }
-
                 Method (_PRW, 0, NotSerialized)
                 {
                     Return (GPRW (0x18, 0x04))
                 }
             }
-
             Device (US12)
             {
                 Name (_ADR, 0x00040001)
@@ -4386,13 +4032,11 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Return (0x03)
                     }
                 }
-
                 Method (_PRW, 0, NotSerialized)
                 {
                     Return (GPRW (0x17, 0x03))
                 }
             }
-
             Device (NMAC)
             {
                 Name (_ADR, 0x000A0000)
@@ -4410,7 +4054,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     }
                 }
             }
-
             Device (IDE0)
             {
                 Name (_ADR, 0x00060000)
@@ -4426,7 +4069,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     IR0M,   1
                 }
-
                 Name (REGF, One)
                 Method (_REG, 2, NotSerialized)
                 {
@@ -4435,7 +4077,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Store (Arg1, REGF)
                     }
                 }
-
                 OperationRegion (A090, PCI_Config, 0x50, 0x18)
                 Field (A090, DWordAcc, NoLock, Preserve)
                 {
@@ -4447,7 +4088,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     UMSS,   16, 
                     UMSP,   16
                 }
-
                 Name (TIM0, Package (0x07)
                 {
                     Package (0x05)
@@ -4458,7 +4098,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         0xF0, 
                         0x0384
                     }, 
-
                     Package (0x05)
                     {
                         0x11, 
@@ -4467,7 +4106,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         0x47, 
                         0xA8
                     }, 
-
                     Package (0x07)
                     {
                         0x78, 
@@ -4478,7 +4116,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         0x14, 
                         0x0F
                     }, 
-
                     Package (0x05)
                     {
                         0x05, 
@@ -4487,7 +4124,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         0x02, 
                         Zero
                     }, 
-
                     Package (0x04)
                     {
                         0x02, 
@@ -4495,7 +4131,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Zero, 
                         Zero
                     }, 
-
                     Package (0x08)
                     {
                         0x02, 
@@ -4507,7 +4142,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         0x05, 
                         0x06
                     }, 
-
                     Package (0x07)
                     {
                         0x02, 
@@ -4554,7 +4188,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         ,   3, 
                     PMUE,   2
                 }
-
                 Name (GMPT, Zero)
                 Name (GMUE, Zero)
                 Name (GMUT, Zero)
@@ -4569,7 +4202,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Store ("GTM_CHN0", Debug)
                         Return (GTM (PMPT, PMUE, PMUT, PSPT, PSUE, PSUT))
                     }
-
                     Method (_STM, 3, NotSerialized)
                     {
                         Store ("STM_CHN0", Debug)
@@ -4591,7 +4223,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Store (GTF (Zero, Arg1), ATA0)
                         Store (GTF (One, Arg2), ATA1)
                     }
-
                     Device (DRV0)
                     {
                         Name (_ADR, Zero)
@@ -4601,7 +4232,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Return (Concatenate (RATA (ATA0), FZTF))
                         }
                     }
-
                     Device (DRV1)
                     {
                         Name (_ADR, One)
@@ -4612,7 +4242,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         }
                     }
                 }
-
                 Device (CHN1)
                 {
                     Name (_ADR, One)
@@ -4621,7 +4250,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Store ("GTM_CHN1", Debug)
                         Return (GTM (SMPT, SMUE, SMUT, SSPT, SSUE, SSUT))
                     }
-
                     Method (_STM, 3, NotSerialized)
                     {
                         Store (Arg0, Debug)
@@ -4642,7 +4270,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Store (GTF (Zero, Arg1), ATA2)
                         Store (GTF (One, Arg2), ATA3)
                     }
-
                     Device (DRV0)
                     {
                         Name (_ADR, Zero)
@@ -4652,7 +4279,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Return (Concatenate (RATA (ATA2), FZTF))
                         }
                     }
-
                     Device (DRV1)
                     {
                         Name (_ADR, One)
@@ -4663,14 +4289,12 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         }
                     }
                 }
-
                 Method (DRMP, 0, NotSerialized)
                 {
                     ShiftRight (CPB0, 0x04, Local1)
                     And (Local1, 0x0F, Local0)
                     Return (Local0)
                 }
-
                 Method (GTM, 6, Serialized)
                 {
                     Store (Ones, PIO0)
@@ -4683,7 +4307,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         Return (TMD0)
                     }
-
                     If (LEqual (PTS0, One))
                     {
                         If (OSFL ())
@@ -4691,7 +4314,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Store (One, IR0M)
                         }
                     }
-
                     Store (Match (DerefOf (Index (TIM0, One)), MEQ, Arg0, MTR, 
                         Zero, Zero), Local6)
                     Store (DerefOf (Index (DerefOf (Index (TIM0, Zero)), Local6)), 
@@ -4712,7 +4334,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             DMA0)
                         Or (CHNF, One, CHNF)
                     }
-
                     If (Arg4)
                     {
                         Store (DerefOf (Index (DerefOf (Index (TIM0, 0x05)), Arg5)), 
@@ -4721,11 +4342,9 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             DMA1)
                         Or (CHNF, 0x04, CHNF)
                     }
-
                     Store (TMD0, Debug)
                     Return (TMD0)
                 }
-
                 Method (STM, 0, Serialized)
                 {
                     If (REGF) {}
@@ -4733,7 +4352,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         Return (Zero)
                     }
-
                     If (PTS0)
                     {
                         Store (SID0, ID20)
@@ -4752,7 +4370,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Store (UMSS, SID4)
                         Store (UMSP, SID5)
                     }
-
                     Store (Zero, PTS0)
                     Store (Zero, GMUE)
                     Store (Zero, GMUT)
@@ -4766,7 +4383,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         {
                             Store (0x06, Local0)
                         }
-
                         Store (DerefOf (Index (DerefOf (Index (TIM0, 0x06)), Local0)), 
                             GMUT)
                         Or (GMUE, 0x03, GMUE)
@@ -4781,7 +4397,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             }
                         }
                     }
-
                     If (And (CHNF, 0x04))
                     {
                         Store (Match (DerefOf (Index (TIM0, 0x02)), MLE, DMA1, MTR, 
@@ -4790,7 +4405,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         {
                             Store (0x06, Local0)
                         }
-
                         Store (DerefOf (Index (DerefOf (Index (TIM0, 0x06)), Local0)), 
                             GSUT)
                         Or (GSUE, 0x03, GSUE)
@@ -4805,7 +4419,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             }
                         }
                     }
-
                     And (Match (DerefOf (Index (TIM0, Zero)), MGE, PIO0, MTR, 
                         Zero, Zero), 0x07, Local0)
                     Store (DerefOf (Index (DerefOf (Index (TIM0, One)), Local0)), 
@@ -4818,7 +4431,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     Store (Local1, GSPT)
                     Return (Zero)
                 }
-
                 Name (AT01, Buffer (0x07)
                 {
                      0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0xEF
@@ -4854,7 +4466,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     Store (Arg2, A005)
                     Increment (CMDC)
                 }
-
                 Method (GTF, 2, Serialized)
                 {
                     Store ("GTF_Entry", Debug)
@@ -4881,7 +4492,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         CreateWordField (Arg1, 0xB0, IW88)
                         Store (IW88, ID88)
                     }
-
                     Store (0xA0, Local7)
                     If (Arg0)
                     {
@@ -4895,7 +4505,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         {
                             Store (PIO0, PIOT)
                         }
-
                         If (And (CHNF, 0x04))
                         {
                             If (And (CHNF, 0x10))
@@ -4917,7 +4526,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Store (DMA0, DMAT)
                         }
                     }
-
                     If (LAnd (LAnd (And (ID53, 0x04), And (ID88, 0xFF00
                         )), DMAT))
                     {
@@ -4927,7 +4535,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         {
                             Store (0x06, Local1)
                         }
-
                         GTFB (AT01, Or (0x40, Local1), Local7)
                     }
                     Else
@@ -4941,7 +4548,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             GTFB (AT01, Local1, Local7)
                         }
                     }
-
                     If (IRDY)
                     {
                         And (Match (DerefOf (Index (TIM0, Zero)), MGE, PIOT, MTR, 
@@ -4957,17 +4563,14 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             GTFB (AT01, One, Local7)
                         }
                     }
-
                     If (LAnd (And (ID59, 0x0100), And (ID59, 0xFF)))
                     {
                         GTFB (AT03, And (ID59, 0xFF), Local7)
                     }
-
                     Store ("ATAB_GTF", Debug)
                     Store (ATAB, Debug)
                     Return (ATAB)
                 }
-
                 Method (RATA, 1, NotSerialized)
                 {
                     CreateByteField (Arg0, Zero, CMDN)
@@ -4977,7 +4580,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     Return (RETB)
                 }
             }
-
             Device (ATA0)
             {
                 Name (_ADR, 0x00090000)
@@ -4994,12 +4596,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         Return (SPTM)
                     }
-
                     Method (_STM, 3, NotSerialized)
                     {
                         Store (Arg0, SPTM)
                     }
-
                     Device (MAST)
                     {
                         Name (_ADR, Zero)
@@ -5012,7 +4612,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Return (Concatenate (Local0, FZTF))
                         }
                     }
-
                     Device (SLAV)
                     {
                         Name (_ADR, One)
@@ -5026,7 +4625,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         }
                     }
                 }
-
                 Device (SEC0)
                 {
                     Name (_ADR, One)
@@ -5040,12 +4638,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         Return (SSTM)
                     }
-
                     Method (_STM, 3, NotSerialized)
                     {
                         Store (Arg0, SSTM)
                     }
-
                     Device (MAST)
                     {
                         Name (_ADR, Zero)
@@ -5058,7 +4654,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Return (Concatenate (Local0, FZTF))
                         }
                     }
-
                     Device (SLAV)
                     {
                         Name (_ADR, One)
@@ -5072,7 +4667,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         }
                     }
                 }
-
                 Method (DRMP, 0, NotSerialized)
                 {
                     Store (0x08, Local0)
@@ -5081,7 +4675,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     Return (Local0)
                 }
             }
-
             Device (P0P1)
             {
                 Name (_ADR, 0x00080000)
@@ -5089,18 +4682,15 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     Return (GPRW (Zero, 0x04))
                 }
-
                 Method (_PRT, 0, NotSerialized)
                 {
                     If (PICM)
                     {
                         Return (AR01)
                     }
-
                     Return (PR01)
                 }
             }
-
             Device (HDAC)
             {
                 Name (_ADR, 0x00070000)
@@ -5116,7 +4706,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         Store (SACW, AOCW)
                     }
                 }
-
                 Method (_PS3, 0, NotSerialized)
                 {
                     Store (AOCW, SACW)
@@ -5125,7 +4714,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     Store (0x03, PMDS)
                     Store (One, PMEN)
                 }
-
                 OperationRegion (PMCF, PCI_Config, 0x48, 0x02)
                 Field (PMCF, ByteAcc, NoLock, Preserve)
                 {
@@ -5135,7 +4723,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         ,   6, 
                     PMST,   1
                 }
-
                 OperationRegion (DCF2, PCI_Config, 0xE0, 0x08)
                 Field (DCF2, ByteAcc, NoLock, Preserve)
                 {
@@ -5143,13 +4730,11 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     Offset (0x06), 
                     CDID,   8
                 }
-
                 Method (_PRW, 0, NotSerialized)
                 {
                     Return (GPRW (0x15, 0x04))
                 }
             }
-
             Device (IXVE)
             {
                 Name (_ADR, 0x000B0000)
@@ -5159,10 +4744,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     {
                         Return (AR02)
                     }
-
                     Return (PR02)
                 }
-
                 Device (IGPU)
                 {
                     Name (_ADR, Zero)
@@ -5177,12 +4760,11 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             GLOB,   4800
                         }
                     }
-
                     Scope (^^^PCI0)
                     {
                         Device (WMI0)
                         {
-                            Name (_HID, "*pnp0c14")
+                            Name (_HID, EisaId ("PNP0C14"))
                             Name (_UID, "NVIF")
                             Name (_WDG, Buffer (0x3C)
                             {
@@ -5207,7 +4789,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                         Subtract (SizeOf (Arg2), 0x08, Local2)
                                         ShiftLeft (Local2, 0x03, Local2)
                                     }
-
                                     CreateField (Arg2, 0x40, Local2, ARGS)
                                     Store (FUNC, Debug)
                                     Store (SUBF, Debug)
@@ -5215,7 +4796,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                     Return (^^IXVE.IGPU.NVIF (FUNC, SUBF, ARGS))
                                 }
                             }
-
                             Name (WQBA, Buffer (0x025D)
                             {
                                 /* 0000 */   0x46, 0x4F, 0x4D, 0x42, 0x01, 0x00, 0x00, 0x00,
@@ -5297,7 +4877,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             })
                         }
                     }
-
                     Name (ERR0, Buffer (0x04)
                     {
                          0x00, 0x00, 0x00, 0x00
@@ -5334,7 +4913,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                     }
                                 }
                             }
-
                             If (LEqual (Arg0, 0x0D))
                             {
                                 If (LEqual (Arg1, Zero))
@@ -5364,10 +4942,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 }
                             }
                         }
-
                         Return (Local0)
                     }
-
                     Scope (^^^PCI0)
                     {
                         Device (K800)
@@ -5383,7 +4959,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 LDTF,   4
                             }
                         }
-
                         Device (K802)
                         {
                             Name (_ADR, 0x00180002)
@@ -5397,7 +4972,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 Offset (0x05), 
                                 DDRM,   1
                             }
-
                             OperationRegion (G040, PCI_Config, 0x40, 0x20)
                             Field (G040, AnyAcc, NoLock, Preserve)
                             {
@@ -5434,7 +5008,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 RB29,   10, 
                                 Offset (0x20)
                             }
-
                             Field (G040, AnyAcc, NoLock, Preserve)
                             {
                                 CSE0,   1, 
@@ -5469,14 +5042,12 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                     ,   4, 
                                 BAL7,   9
                             }
-
                             OperationRegion (G080, PCI_Config, 0x80, 0x04)
                             Field (G080, AnyAcc, NoLock, Preserve)
                             {
                                 RR30,   4, 
                                 RR31,   4
                             }
-
                             Field (G080, AnyAcc, NoLock, Preserve)
                             {
                                 CS10,   4, 
@@ -5485,7 +5056,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 CS76,   4
                             }
                         }
-
                         Device (K803)
                         {
                             Name (_ADR, 0x00180003)
@@ -5497,7 +5067,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 PM1C,   3
                             }
                         }
-
                         OperationRegion (NVBF, SystemMemory, 0xDFFBE0E4, 0x0100)
                         Field (NVBF, AnyAcc, NoLock, Preserve)
                         {
@@ -5557,7 +5126,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Offset (0x95), 
                             YDDR,   1
                         }
-
                         Method (GTOM, 0, NotSerialized)
                         {
                             If (TOM2)
@@ -5569,7 +5137,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 Return (TOM1)
                             }
                         }
-
                         Method (PBNK, 2, NotSerialized)
                         {
                             Store (Zero, Local2)
@@ -5583,7 +5150,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 {
                                     Store (RR33, Local1)
                                 }
-
                                 If (YDDR)
                                 {
                                     Store (One, Local2)
@@ -5599,13 +5165,11 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 {
                                     Store (^K802.RR31, Local1)
                                 }
-
                                 If (^K802.DDRM)
                                 {
                                     Store (One, Local2)
                                 }
                             }
-
                             If (Local2)
                             {
                                 Return (DBK2 (Local1))
@@ -5615,7 +5179,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 Return (DBNK (Local1))
                             }
                         }
-
                         Method (PCOL, 2, NotSerialized)
                         {
                             Store (Zero, Local2)
@@ -5629,7 +5192,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 {
                                     Store (RR33, Local1)
                                 }
-
                                 If (YDDR)
                                 {
                                     Store (One, Local2)
@@ -5645,13 +5207,11 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 {
                                     Store (^K802.RR31, Local1)
                                 }
-
                                 If (^K802.DDRM)
                                 {
                                     Store (One, Local2)
                                 }
                             }
-
                             If (Local2)
                             {
                                 Return (DCL2 (Local1))
@@ -5661,7 +5221,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 Return (DCOL (Local1))
                             }
                         }
-
                         Method (DBNK, 1, NotSerialized)
                         {
                             Name (TTT0, Zero)
@@ -5752,12 +5311,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 }
                             }
                         }
-
                         Method (DBK2, 1, NotSerialized)
                         {
                             Return (0x03)
                         }
-
                         Method (DCOL, 1, NotSerialized)
                         {
                             Name (TTT0, Zero)
@@ -5848,7 +5405,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 }
                             }
                         }
-
                         Method (DCL2, 1, NotSerialized)
                         {
                             Name (TTT0, Zero)
@@ -5925,7 +5481,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 }
                             }
                         }
-
                         Method (RNKP, 2, NotSerialized)
                         {
                             Name (TTT0, Zero)
@@ -6050,7 +5605,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 }
                             }
                         }
-
                         Method (STAD, 2, NotSerialized)
                         {
                             Name (TTT0, Zero)
@@ -6175,7 +5729,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 }
                             }
                         }
-
                         Method (GLDT, 0, NotSerialized)
                         {
                             Name (TTT0, Zero)
@@ -6294,7 +5847,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 }
                             }
                         }
-
                         Method (GLDW, 0, NotSerialized)
                         {
                             Name (TTT0, Zero)
@@ -6329,7 +5881,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 }
                             }
                         }
-
                         Method (PCS8, 1, NotSerialized)
                         {
                             If (LLess (Arg0, 0x02))
@@ -6354,7 +5905,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                     }
                                 }
                             }
-
                             Name (TTT0, Zero)
                             Store (Local0, TTT0)
                             If (LEqual (TTT0, Zero))
@@ -6499,7 +6049,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 }
                             }
                         }
-
                         Method (CSE8, 1, NotSerialized)
                         {
                             Name (TTT0, Zero)
@@ -6558,7 +6107,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 }
                             }
                         }
-
                         Method (BAL8, 1, NotSerialized)
                         {
                             Name (TTT0, Zero)
@@ -6617,7 +6165,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 }
                             }
                         }
-
                         Method (GTBW, 2, NotSerialized)
                         {
                             Store (GMCK (), Local1)
@@ -6630,10 +6177,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             {
                                 Store (Local2, Local4)
                             }
-
                             Return (Local4)
                         }
-
                         Method (GLBW, 2, NotSerialized)
                         {
                             Multiply (0x0DAC, Arg0, Local3)
@@ -6641,7 +6186,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Divide (Local3, 0x00027100, Local3, Local4)
                             Return (Local4)
                         }
-
                         Method (GMCK, 0, NotSerialized)
                         {
                             Name (TTT0, Zero)
@@ -6683,7 +6227,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 }
                             }
                         }
-
                         Method (ATB8, 2, NotSerialized)
                         {
                             Store (0x10, Local2)
@@ -6694,10 +6237,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             {
                                 Store (M2BW, Local3)
                             }
-
                             Return (Local3)
                         }
-
                         Method (IMPM, 0, NotSerialized)
                         {
                             Name (BU2A, Buffer (0x04)
@@ -6758,7 +6299,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 {
                                     Store (0x1388, Local3)
                                 }
-
                                 Add (Local3, 0x01F4, Local3)
                                 Add (Local3, 0x2710, Local3)
                                 Divide (Local3, 0x64, Local2, BF07)
@@ -6776,24 +6316,20 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                             {
                                                 Store (Local2, BBB0)
                                             }
-
                                             If (LGreater (Local2, BBB1))
                                             {
                                                 Store (Local2, BBB1)
                                             }
-
                                             Store (PCOL (Zero, Local1), Local2)
                                             If (LLess (Local2, BBB2))
                                             {
                                                 Store (Local2, BBB2)
                                             }
-
                                             If (LGreater (Local2, BBB3))
                                             {
                                                 Store (Local2, BBB3)
                                             }
                                         }
-
                                         Increment (Local1)
                                         If (LGreater (Local1, 0x03))
                                         {
@@ -6811,7 +6347,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                             Store (0x02, BBBA)
                                             Store (One, BBB9)
                                         }
-
                                         Store (Zero, Local1)
                                         While (One)
                                         {
@@ -6827,18 +6362,15 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                                         {
                                                             Store (Local3, BBB0)
                                                         }
-
                                                         If (LGreater (Local3, BBB1))
                                                         {
                                                             Store (Local3, BBB1)
                                                         }
-
                                                         Store (PCOL (Local1, Local2), Local3)
                                                         If (LLess (Local3, BBB2))
                                                         {
                                                             Store (Local3, BBB2)
                                                         }
-
                                                         If (LGreater (Local3, BBB3))
                                                         {
                                                             Store (Local3, BBB3)
@@ -6851,32 +6383,27 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                                         {
                                                             Store (Local3, BBB4)
                                                         }
-
                                                         If (LGreater (Local3, BBB5))
                                                         {
                                                             Store (Local3, BBB5)
                                                         }
-
                                                         Store (PCOL (Local1, Local2), Local3)
                                                         If (LLess (Local3, BBB6))
                                                         {
                                                             Store (Local3, BBB6)
                                                         }
-
                                                         If (LGreater (Local3, BBB7))
                                                         {
                                                             Store (Local3, BBB7)
                                                         }
                                                     }
                                                 }
-
                                                 Increment (Local2)
                                                 If (LGreater (Local2, 0x03))
                                                 {
                                                     Break
                                                 }
                                             }
-
                                             Increment (Local1)
                                             If (LGreater (Local1, One))
                                             {
@@ -6901,31 +6428,26 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                                     {
                                                         Store (Local3, BBB0)
                                                     }
-
                                                     If (LGreater (Local3, BBB1))
                                                     {
                                                         Store (Local3, BBB1)
                                                     }
-
                                                     Store (PCOL (Local1, Local2), Local3)
                                                     If (LLess (Local3, BBB2))
                                                     {
                                                         Store (Local3, BBB3)
                                                     }
-
                                                     If (LGreater (Local3, BBB3))
                                                     {
                                                         Store (Local3, BBB4)
                                                     }
                                                 }
-
                                                 Increment (Local2)
                                                 If (LGreater (Local2, 0x03))
                                                 {
                                                     Break
                                                 }
                                             }
-
                                             Increment (Local1)
                                             If (LGreater (Local1, One))
                                             {
@@ -6934,7 +6456,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                         }
                                     }
                                 }
-
                                 Store (GTOM (), Local2)
                                 If (RR13)
                                 {
@@ -6946,7 +6467,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 {
                                     Store (Local2, BBM0)
                                 }
-
                                 Store (BBBA, BF03)
                                 Concatenate (BU2A, BU2B, Local4)
                                 Store (BBB8, BF0A)
@@ -6967,7 +6487,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                     Store (Local5, Local4)
                                     Concatenate (Local4, BU2C, Local5)
                                 }
-
                                 Store (BF07, BASL)
                                 Store (BASL, TAVN)
                                 Store (BF08, BBBB)
@@ -6981,7 +6500,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 {
                                     Divide (0x0FA0, BBBB, Local2, CLTF)
                                 }
-
                                 Store (0xFFFF, BF1A)
                                 Store (GLDT (), Local3)
                                 Store (GLDW (), Local1)
@@ -7022,7 +6540,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                         }
                                     }
                                 }
-
                                 Add (Local3, 0x01C2, Local3)
                                 Add (Local3, 0x1388, Local3)
                                 Divide (Local3, 0x64, Local2, BASL)
@@ -7042,7 +6559,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                         {
                                             Store (0x02, BF0A)
                                         }
-
                                         Store (PCS8 (Local1), Local2)
                                         Store (DerefOf (Index (Local2, Zero)), BF0B)
                                         Store (DerefOf (Index (Local2, Zero)), BF0C)
@@ -7056,19 +6572,16 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                         {
                                             Multiply (DerefOf (Index (Local2, 0x02)), 0x00100000, BF0F)
                                         }
-
                                         Increment (Local3)
                                         Store (Local4, Local5)
                                         Concatenate (Local5, BU2C, Local4)
                                     }
-
                                     Increment (Local1)
                                     If (LEqual (Local1, 0x08))
                                     {
                                         Break
                                     }
                                 }
-
                                 Store (Local3, BF03)
                                 Store (One, BF04)
                                 Multiply (0x0F, 0x03E8, Local2)
@@ -7081,7 +6594,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 {
                                     Divide (0x0FA0, 0xA0, , CLTF)
                                 }
-
                                 Store (0xFFFF, BF1A)
                                 Store (GLDT (), Local3)
                                 Store (GLDW (), Local1)
@@ -7094,7 +6606,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             }
                         }
                     }
-
                     Name (HVER, 0x70000112)
                     Name (HCBF, Buffer (One)
                     {
@@ -7128,7 +6639,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 {
                                     WBYT (Local1, 0xF0, 0xF2)
                                 }
-
                                 Sleep (0x0A)
                                 Increment (Local0)
                                 If (LEqual (Local0, 0x04))
@@ -7145,11 +6655,9 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 WBYT (Local0, 0xF0, 0xF2)
                             }
                         }
-
                         Sleep (0x0190)
                         CLAR ()
                     }
-
                     Method (DGOF, 1, NotSerialized)
                     {
                         If (LEqual (Arg0, 0xFF))
@@ -7162,7 +6670,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 {
                                     WBYT (Local1, 0xF0, 0xF0)
                                 }
-
                                 Increment (Local0)
                                 If (LEqual (Local0, 0x04))
                                 {
@@ -7178,11 +6685,9 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                 WBYT (Local0, 0xF0, 0xF0)
                             }
                         }
-
                         Sleep (0x0190)
                         CLAR ()
                     }
-
                     Method (HSTA, 1, NotSerialized)
                     {
                         Store (DerefOf (Index (DGHC, Arg0)), Local0)
@@ -7203,7 +6708,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             Return (One)
                         }
                     }
-
                     Method (_DSM, 4, NotSerialized)
                     {
                         If (LEqual (Arg0, Buffer (0x10)
@@ -7216,7 +6720,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             {
                                 Return (0x80000002)
                             }
-
                             Name (TTT0, Zero)
                             Store (Arg2, TTT0)
                             If (LEqual (TTT0, Zero))
@@ -7334,7 +6837,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                                                             {
                                                                                 WBYT (SLAX, 0xF0, 0xF3)
                                                                             }
-
                                                                             Store (SMRB (SLAX, 0xF5), Local0)
                                                                             Store (SMRB (SLAX, 0xF6), Local1)
                                                                             Concatenate (Local0, Local1, Local2)
@@ -7350,7 +6852,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                                                             {
                                                                                 Store (Local2, DDCA)
                                                                             }
-
                                                                             Store (SLAX, HCTG)
                                                                             Return (0x03)
                                                                         }
@@ -7384,11 +6885,9 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                                     }
                                 }
                             }
-
                             Return (Zero)
                         }
                     }
-
                     Method (_DOD, 0, NotSerialized)
                     {
                         Return (Package (0x06)
@@ -7401,24 +6900,20 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                             0x80040320
                         })
                     }
-
                     Device (CRT0)
                     {
                         Name (_ADR, 0x80000100)
                     }
-
                     Device (LCD0)
                     {
                         Name (_ADR, 0x0110)
                     }
-
                     Device (DDVI)
                     {
                         Name (_ADR, 0x80040320)
                     }
                 }
             }
-
             Device (MXR0)
             {
                 Name (_ADR, 0x00100000)
@@ -7426,18 +6921,15 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     Return (GPRW (0x11, 0x04))
                 }
-
                 Method (_PRT, 0, NotSerialized)
                 {
                     If (PICM)
                     {
                         Return (AR10)
                     }
-
                     Return (PR10)
                 }
             }
-
             Device (BR11)
             {
                 Name (_ADR, 0x00110000)
@@ -7445,18 +6937,15 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     Return (GPRW (0x11, 0x04))
                 }
-
                 Method (_PRT, 0, NotSerialized)
                 {
                     If (PICM)
                     {
                         Return (AR11)
                     }
-
                     Return (PR11)
                 }
             }
-
             Device (BR12)
             {
                 Name (_ADR, 0x00120000)
@@ -7464,18 +6953,15 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     Return (GPRW (0x11, 0x04))
                 }
-
                 Method (_PRT, 0, NotSerialized)
                 {
                     If (PICM)
                     {
                         Return (AR12)
                     }
-
                     Return (PR12)
                 }
             }
-
             Device (BR13)
             {
                 Name (_ADR, 0x00130000)
@@ -7483,18 +6969,15 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     Return (GPRW (0x11, 0x04))
                 }
-
                 Method (_PRT, 0, NotSerialized)
                 {
                     If (PICM)
                     {
                         Return (AR13)
                     }
-
                     Return (PR13)
                 }
             }
-
             Device (BR14)
             {
                 Name (_ADR, 0x00140000)
@@ -7502,18 +6985,15 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     Return (GPRW (0x11, 0x04))
                 }
-
                 Method (_PRT, 0, NotSerialized)
                 {
                     If (PICM)
                     {
                         Return (AR14)
                     }
-
                     Return (PR14)
                 }
             }
-
             Device (BR15)
             {
                 Name (_ADR, 0x00150000)
@@ -7521,18 +7001,15 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     Return (GPRW (0x11, 0x04))
                 }
-
                 Method (_PRT, 0, NotSerialized)
                 {
                     If (PICM)
                     {
                         Return (AR15)
                     }
-
                     Return (PR15)
                 }
             }
-
             Device (BR16)
             {
                 Name (_ADR, 0x00160000)
@@ -7540,18 +7017,15 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     Return (GPRW (0x11, 0x04))
                 }
-
                 Method (_PRT, 0, NotSerialized)
                 {
                     If (PICM)
                     {
                         Return (AR16)
                     }
-
                     Return (PR16)
                 }
             }
-
             Device (BR17)
             {
                 Name (_ADR, 0x00170000)
@@ -7559,19 +7033,16 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     Return (GPRW (0x11, 0x04))
                 }
-
                 Method (_PRT, 0, NotSerialized)
                 {
                     If (PICM)
                     {
                         Return (AR17)
                     }
-
                     Return (PR17)
                 }
             }
         }
-
         Scope (\_GPE)
         {
             Method (_L10, 0, NotSerialized)
@@ -7579,49 +7050,41 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 \_SB.PCI0.SBRG.SIOH ()
                 Notify (\_SB.PWRB, 0x02)
             }
-
             Method (_L09, 0, NotSerialized)
             {
                 Notify (\_SB.PCI0.SMB0, 0x02)
                 Notify (\_SB.PWRB, 0x02)
             }
-
             Method (_L0D, 0, NotSerialized)
             {
                 Notify (\_SB.PCI0.USB0, 0x02)
                 Notify (\_SB.PWRB, 0x02)
             }
-
             Method (_L05, 0, NotSerialized)
             {
                 Notify (\_SB.PCI0.USB2, 0x02)
                 Notify (\_SB.PWRB, 0x02)
             }
-
             Method (_L18, 0, NotSerialized)
             {
                 Notify (\_SB.PCI0.US15, 0x02)
                 Notify (\_SB.PWRB, 0x02)
             }
-
             Method (_L17, 0, NotSerialized)
             {
                 Notify (\_SB.PCI0.US12, 0x02)
                 Notify (\_SB.PWRB, 0x02)
             }
-
             Method (_L00, 0, NotSerialized)
             {
                 Notify (\_SB.PCI0.P0P1, 0x02)
                 Notify (\_SB.PWRB, 0x02)
             }
-
             Method (_L15, 0, NotSerialized)
             {
                 Notify (\_SB.PCI0.HDAC, 0x02)
                 Notify (\_SB.PWRB, 0x02)
             }
-
             Method (_L11, 0, NotSerialized)
             {
                 Notify (\_SB.PCI0.MXR0, 0x02)
@@ -7635,7 +7098,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 Notify (\_SB.PWRB, 0x02)
             }
         }
-
         Device (PWRB)
         {
             Name (_HID, EisaId ("PNP0C0C"))
@@ -7647,7 +7109,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             }
         }
     }
-
     Scope (_SB)
     {
         Name (BUFA, ResourceTemplate ()
@@ -7667,7 +7128,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 Return (0x09)
             }
         }
-
         Method (LPRS, 2, NotSerialized)
         {
             If (PICM)
@@ -7679,7 +7139,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 Return (Arg0)
             }
         }
-
         Method (LCRS, 1, NotSerialized)
         {
             If (PICM)
@@ -7697,77 +7156,62 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     Store (0x17, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x02))
                 {
                     Store (0x16, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x0D))
                 {
                     Store (0x15, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x08))
                 {
                     Store (0x14, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x0C))
                 {
                     Store (0x13, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x06))
                 {
                     Store (0x12, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x04))
                 {
                     Store (0x11, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x03))
                 {
                     Store (0x10, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x0F))
                 {
                     Store (0x0F, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x0E))
                 {
                     Store (0x0E, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x0B))
                 {
                     Store (0x0B, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x0A))
                 {
                     Store (0x0A, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x09))
                 {
                     Store (0x09, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x07))
                 {
                     Store (0x07, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x05))
                 {
                     Store (0x05, AIRQ)
                 }
-
                 Return (BUFB)
             }
             Else
@@ -7776,7 +7220,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 Return (BUFA)
             }
         }
-
         Method (LCRO, 1, NotSerialized)
         {
             If (PICM)
@@ -7794,77 +7237,62 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     Store (0x17, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x02))
                 {
                     Store (0x16, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x0D))
                 {
                     Store (0x15, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x08))
                 {
                     Store (0x14, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x0C))
                 {
                     Store (0x13, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x06))
                 {
                     Store (0x12, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x04))
                 {
                     Store (0x11, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x03))
                 {
                     Store (0x10, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x0F))
                 {
                     Store (0x0F, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x0E))
                 {
                     Store (0x0E, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x0B))
                 {
                     Store (0x0B, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x0A))
                 {
                     Store (0x0A, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x09))
                 {
                     Store (0x09, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x07))
                 {
                     Store (0x07, AIRQ)
                 }
-
                 If (LEqual (Arg0, 0x05))
                 {
                     Store (0x05, AIRQ)
                 }
-
                 Return (BUFB)
             }
             Else
@@ -7873,7 +7301,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 Return (BUFA)
             }
         }
-
         Method (LSRS, 1, NotSerialized)
         {
             If (PICM)
@@ -7884,77 +7311,62 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     Store (One, Local0)
                 }
-
                 If (LEqual (Local0, 0x16))
                 {
                     Store (0x02, Local0)
                 }
-
                 If (LEqual (Local0, 0x15))
                 {
                     Store (0x0D, Local0)
                 }
-
                 If (LEqual (Local0, 0x14))
                 {
                     Store (0x08, Local0)
                 }
-
                 If (LEqual (Local0, 0x13))
                 {
                     Store (0x0C, Local0)
                 }
-
                 If (LEqual (Local0, 0x12))
                 {
                     Store (0x06, Local0)
                 }
-
                 If (LEqual (Local0, 0x11))
                 {
                     Store (0x04, Local0)
                 }
-
                 If (LEqual (Local0, 0x10))
                 {
                     Store (0x03, Local0)
                 }
-
                 If (LEqual (Local0, 0x0F))
                 {
                     Store (0x0F, Local0)
                 }
-
                 If (LEqual (Local0, 0x0E))
                 {
                     Store (0x0E, Local0)
                 }
-
                 If (LEqual (Local0, 0x0B))
                 {
                     Store (0x0B, Local0)
                 }
-
                 If (LEqual (Local0, 0x0A))
                 {
                     Store (0x0A, Local0)
                 }
-
                 If (LEqual (Local0, 0x09))
                 {
                     Store (0x09, Local0)
                 }
-
                 If (LEqual (Local0, 0x07))
                 {
                     Store (0x07, Local0)
                 }
-
                 If (LEqual (Local0, 0x05))
                 {
                     Store (0x05, Local0)
                 }
-
                 Return (Local0)
             }
             Else
@@ -7964,7 +7376,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 Return (Decrement (Local0))
             }
         }
-
         Method (LSRO, 1, NotSerialized)
         {
             If (PICM)
@@ -7975,77 +7386,62 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     Store (One, Local0)
                 }
-
                 If (LEqual (Local0, 0x16))
                 {
                     Store (0x02, Local0)
                 }
-
                 If (LEqual (Local0, 0x15))
                 {
                     Store (0x0D, Local0)
                 }
-
                 If (LEqual (Local0, 0x14))
                 {
                     Store (0x08, Local0)
                 }
-
                 If (LEqual (Local0, 0x13))
                 {
                     Store (0x0C, Local0)
                 }
-
                 If (LEqual (Local0, 0x12))
                 {
                     Store (0x06, Local0)
                 }
-
                 If (LEqual (Local0, 0x11))
                 {
                     Store (0x04, Local0)
                 }
-
                 If (LEqual (Local0, 0x10))
                 {
                     Store (0x03, Local0)
                 }
-
                 If (LEqual (Local0, 0x0F))
                 {
                     Store (0x0F, Local0)
                 }
-
                 If (LEqual (Local0, 0x0E))
                 {
                     Store (0x0E, Local0)
                 }
-
                 If (LEqual (Local0, 0x0B))
                 {
                     Store (0x0B, Local0)
                 }
-
                 If (LEqual (Local0, 0x0A))
                 {
                     Store (0x0A, Local0)
                 }
-
                 If (LEqual (Local0, 0x09))
                 {
                     Store (0x09, Local0)
                 }
-
                 If (LEqual (Local0, 0x07))
                 {
                     Store (0x07, Local0)
                 }
-
                 If (LEqual (Local0, 0x05))
                 {
                     Store (0x05, Local0)
                 }
-
                 Return (Local0)
             }
             Else
@@ -8055,7 +7451,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 Return (Decrement (Local0))
             }
         }
-
         Device (LNKA)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8064,28 +7459,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.PIRA))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSA, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.PIRA)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.PIRA))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.PIRA)
             }
         }
-
         Device (LNKB)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8094,28 +7484,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.PIRB))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSB, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.PIRB)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.PIRB))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.PIRB)
             }
         }
-
         Device (LNKC)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8124,28 +7509,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.PIRC))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSC, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.PIRC)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.PIRC))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.PIRC)
             }
         }
-
         Device (LNKD)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8154,28 +7534,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.PIRD))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSD, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.PIRD)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.PIRD))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.PIRD)
             }
         }
-
         Device (LN0A)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8184,28 +7559,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P0EA))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSA, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P0EA)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P0EA))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P0EA)
             }
         }
-
         Device (LN0B)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8214,28 +7584,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P0EB))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSB, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P0EB)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P0EB))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P0EB)
             }
         }
-
         Device (LN0C)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8244,28 +7609,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P0EC))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSC, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P0EC)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P0EC))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P0EC)
             }
         }
-
         Device (LN0D)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8274,28 +7634,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P0ED))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSD, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P0ED)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P0ED))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P0ED)
             }
         }
-
         Device (LN1A)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8304,28 +7659,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P1EA))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSA, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P1EA)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P1EA))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P1EA)
             }
         }
-
         Device (LN1B)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8334,28 +7684,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P1EB))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSB, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P1EB)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P1EB))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P1EB)
             }
         }
-
         Device (LN1C)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8364,28 +7709,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P1EC))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSC, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P1EC)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P1EC))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P1EC)
             }
         }
-
         Device (LN1D)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8394,28 +7734,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P1ED))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSD, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P1ED)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P1ED))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P1ED)
             }
         }
-
         Device (LN2A)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8424,28 +7759,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P2EA))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSA, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P2EA)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P2EA))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P2EA)
             }
         }
-
         Device (LN2B)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8454,28 +7784,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P2EB))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSB, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P2EB)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P2EB))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P2EB)
             }
         }
-
         Device (LN2C)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8484,28 +7809,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P2EC))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSC, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P2EC)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P2EC))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P2EC)
             }
         }
-
         Device (LN2D)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8514,28 +7834,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P2ED))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSD, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P2ED)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P2ED))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P2ED)
             }
         }
-
         Device (LN3A)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8544,28 +7859,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P3EA))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSA, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P3EA)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P3EA))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P3EA)
             }
         }
-
         Device (LN3B)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8574,28 +7884,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P3EB))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSB, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P3EB)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P3EB))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P3EB)
             }
         }
-
         Device (LN3C)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8604,28 +7909,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P3EC))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSC, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P3EC)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P3EC))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P3EC)
             }
         }
-
         Device (LN3D)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8634,28 +7934,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P3ED))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSD, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P3ED)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P3ED))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P3ED)
             }
         }
-
         Device (LN4A)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8664,28 +7959,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P4EA))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSA, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P4EA)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P4EA))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P4EA)
             }
         }
-
         Device (LN4B)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8694,28 +7984,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P4EB))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSB, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P4EB)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P4EB))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P4EB)
             }
         }
-
         Device (LN4C)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8724,28 +8009,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P4EC))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSC, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P4EC)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P4EC))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P4EC)
             }
         }
-
         Device (LN4D)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8754,28 +8034,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P4ED))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSD, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P4ED)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P4ED))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P4ED)
             }
         }
-
         Device (LN5A)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8784,28 +8059,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P5EA))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSA, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P5EA)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P5EA))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P5EA)
             }
         }
-
         Device (LN5B)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8814,28 +8084,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P5EB))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSB, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P5EB)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P5EB))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P5EB)
             }
         }
-
         Device (LN5C)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8844,28 +8109,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P5EC))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSC, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P5EC)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P5EC))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P5EC)
             }
         }
-
         Device (LN5D)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8874,28 +8134,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P5ED))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSD, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P5ED)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P5ED))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P5ED)
             }
         }
-
         Device (LN6A)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8904,28 +8159,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P6EA))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSA, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P6EA)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P6EA))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P6EA)
             }
         }
-
         Device (LN6B)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8934,28 +8184,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P6EB))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSB, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P6EB)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P6EB))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P6EB)
             }
         }
-
         Device (LN6C)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8964,28 +8209,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P6EC))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSC, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P6EC)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P6EC))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P6EC)
             }
         }
-
         Device (LN6D)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -8994,28 +8234,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P6ED))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSD, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P6ED)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P6ED))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P6ED)
             }
         }
-
         Device (LN7A)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -9024,28 +8259,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P7EA))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSA, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P7EA)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P7EA))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P7EA)
             }
         }
-
         Device (LN7B)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -9054,28 +8284,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P7EB))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSB, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P7EB)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P7EB))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P7EB)
             }
         }
-
         Device (LN7C)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -9084,28 +8309,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P7EC))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSC, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P7EC)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P7EC))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P7EC)
             }
         }
-
         Device (LN7D)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -9114,28 +8334,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.P7ED))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (PRSD, RSIR))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.P7ED)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRS (^^PCI0.IMAP.P7ED))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRS (Arg0), ^^PCI0.IMAP.P7ED)
             }
         }
-
         Device (LUB0)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -9144,28 +8359,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.PIU0))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (RSB0, RSU1))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.PIU0)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRO (^^PCI0.IMAP.PIU0))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRO (Arg0), ^^PCI0.IMAP.PIU0)
             }
         }
-
         Device (LUB2)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -9174,28 +8384,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.PIU2))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (RSB2, RSI1))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.PIU2)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRO (^^PCI0.IMAP.PIU2))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRO (Arg0), ^^PCI0.IMAP.PIU2)
             }
         }
-
         Device (LMAC)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -9204,28 +8409,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.PILN))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (RSAC, RSMA))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.PILN)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRO (^^PCI0.IMAP.PILN))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRO (Arg0), ^^PCI0.IMAP.PILN)
             }
         }
-
         Device (LAZA)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -9234,28 +8434,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.PAZA))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (RSZA, RSII))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.PAZA)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRO (^^PCI0.IMAP.PAZA))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRO (Arg0), ^^PCI0.IMAP.PAZA)
             }
         }
-
         Device (SGRU)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -9264,28 +8459,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.GPUR))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (RSRU, RSIG))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.GPUR)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRO (^^PCI0.IMAP.GPUR))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRO (Arg0), ^^PCI0.IMAP.GPUR)
             }
         }
-
         Device (LSMB)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -9294,28 +8484,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.PIRM))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (RSMB, RSII))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.PIRM)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRO (^^PCI0.IMAP.PIRM))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRO (Arg0), ^^PCI0.IMAP.PIRM)
             }
         }
-
         Device (LPMU)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -9324,28 +8509,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.PMUD))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (RSMU, RSII))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.PMUD)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRO (^^PCI0.IMAP.PMUD))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRO (Arg0), ^^PCI0.IMAP.PMUD)
             }
         }
-
         Device (LSA0)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -9354,28 +8534,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.PIID))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (RSA0, RSSA))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.PIID)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRO (^^PCI0.IMAP.PIID))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRO (Arg0), ^^PCI0.IMAP.PIID)
             }
         }
-
         Device (LATA)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -9384,35 +8559,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.PR0E))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (RSTA, RSII))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.PR0E)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
-                If (OSFL ())
-                {
-                    Return (Zero)
-                }
-                Else
-                {
-                    Return (LCRO (^^PCI0.IMAP.PR0E))
-                }
+                Return (LCRO (^^PCI0.IMAP.PR0E))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRO (Arg0), ^^PCI0.IMAP.PR0E)
             }
         }
-
         Device (UB11)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -9421,28 +8584,23 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.UBR1))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (RS11, RSU2))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.UBR1)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRO (^^PCI0.IMAP.UBR1))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRO (Arg0), ^^PCI0.IMAP.UBR1)
             }
         }
-
         Device (UB12)
         {
             Name (_HID, EisaId ("PNP0C0F"))
@@ -9451,29 +8609,24 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Return (LSTA (^^PCI0.IMAP.UBR2))
             }
-
             Method (_PRS, 0, NotSerialized)
             {
                 Return (LPRS (RS12, RSI2))
             }
-
             Method (_DIS, 0, NotSerialized)
             {
                 Store (Zero, ^^PCI0.IMAP.UBR2)
             }
-
             Method (_CRS, 0, NotSerialized)
             {
                 Return (LCRO (^^PCI0.IMAP.UBR2))
             }
-
             Method (_SRS, 1, NotSerialized)
             {
                 Store (LSRO (Arg0), ^^PCI0.IMAP.UBR2)
             }
         }
     }
-
     Scope (_SB)
     {
         Name (XCPD, Zero)
@@ -9499,11 +8652,9 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 XCFG,   8
             }
-
             Release (MUTE)
             Return (XCFG)
         }
-
         Method (RWPE, 1, NotSerialized)
         {
             Acquire (MUTE, 0x03E8)
@@ -9514,11 +8665,9 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 XCFG,   16
             }
-
             Release (MUTE)
             Return (XCFG)
         }
-
         Method (RDPE, 1, NotSerialized)
         {
             Acquire (MUTE, 0x03E8)
@@ -9529,11 +8678,9 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 XCFG,   32
             }
-
             Release (MUTE)
             Return (XCFG)
         }
-
         Method (WBPE, 2, NotSerialized)
         {
             Acquire (MUTE, 0x0FFF)
@@ -9543,11 +8690,9 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 XCFG,   8
             }
-
             Store (Arg1, XCFG)
             Release (MUTE)
         }
-
         Method (WWPE, 2, NotSerialized)
         {
             Acquire (MUTE, 0x03E8)
@@ -9558,11 +8703,9 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 XCFG,   16
             }
-
             Store (Arg1, XCFG)
             Release (MUTE)
         }
-
         Method (WDPE, 2, NotSerialized)
         {
             Acquire (MUTE, 0x03E8)
@@ -9573,11 +8716,9 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 XCFG,   32
             }
-
             Store (Arg1, XCFG)
             Release (MUTE)
         }
-
         Method (RWDP, 3, NotSerialized)
         {
             Acquire (MUTE, 0x03E8)
@@ -9588,12 +8729,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 XCFG,   32
             }
-
             And (XCFG, Arg2, Local1)
             Or (Local1, Arg1, XCFG)
             Release (MUTE)
         }
-
         Method (RPME, 1, NotSerialized)
         {
             Add (Arg0, 0x84, Local0)
@@ -9609,12 +8748,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     WDPE (Local0, And (Local1, 0x00010000))
                     Return (One)
                 }
-
                 Return (Zero)
             }
         }
     }
-
     Scope (_SB.PCI0)
     {
         Method (_OSC, 4, NotSerialized)
@@ -9636,32 +8773,26 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     And (CTRL, 0x1E, CTRL)
                 }
-
                 If (LNot (PEHP))
                 {
                     And (CTRL, 0x1E, CTRL)
                 }
-
                 If (LNot (SHPC))
                 {
                     And (CTRL, 0x1D, CTRL)
                 }
-
                 If (LNot (PEPM))
                 {
                     And (CTRL, 0x1B, CTRL)
                 }
-
                 If (LNot (PEER))
                 {
                     And (CTRL, 0x15, CTRL)
                 }
-
                 If (LNot (PECS))
                 {
                     And (CTRL, 0x0F, CTRL)
                 }
-
                 If (Not (And (CDW1, One)))
                 {
                     If (And (CTRL, One)) {}
@@ -9670,20 +8801,16 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                         ^SMB0.GPMD (One)
                         Store (One, ^SMB0.XPME)
                     }
-
                     If (And (CTRL, 0x10)) {}
                 }
-
                 If (LNotEqual (Arg1, One))
                 {
                     Or (CDW1, 0x08, CDW1)
                 }
-
                 If (LNotEqual (CDW3, CTRL))
                 {
                     Or (CDW1, 0x10, CDW1)
                 }
-
                 Store (CTRL, CDW3)
                 Return (Arg3)
             }
@@ -9694,15 +8821,12 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             }
         }
     }
-
     Method (NPTS, 1, NotSerialized)
     {
     }
-
     Method (NWAK, 1, NotSerialized)
     {
     }
-
     Name (FZTF, Buffer (0x07)
     {
          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF5
@@ -9713,7 +8837,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
         INDX,   8, 
         DATA,   8
     }
-
     IndexField (INDX, DATA, ByteAcc, NoLock, Preserve)
     {
         Offset (0x4E), 
@@ -9725,7 +8848,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
         OV54,   8, 
         OV55,   8
     }
-
     Scope (_TZ)
     {
         Method (KELT, 1, NotSerialized)
@@ -9735,12 +8857,10 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             {
                 Store (0x06, Local0)
             }
-
             Multiply (Local0, 0x0A, Local0)
             Add (Local0, 0x0AAC, Local0)
             Return (Local0)
         }
-
         Method (KELV, 1, NotSerialized)
         {
             And (Arg0, 0xFF, Local0)
@@ -9748,7 +8868,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             Add (Local0, 0x0AAC, Local0)
             Return (Local0)
         }
-
         ThermalZone (THRM)
         {
             Method (_TMP, 0, NotSerialized)
@@ -9759,10 +8878,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                 {
                     Return (Zero)
                 }
-
                 Return (KELT (Local0))
             }
-
             Method (_CRT, 0, NotSerialized)
             {
                 Store (One, CR4E)
@@ -9771,7 +8888,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             }
         }
     }
-
     Name (HWMF, Zero)
     Scope (_GPE)
     {
@@ -9782,7 +8898,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             Notify (\_TZ.THRM, 0x80)
         }
     }
-
     Scope (_SB)
     {
         Scope (PCI0)
@@ -9863,7 +8978,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
                     Store (MG1L, LEN5)
                     Add (MIN5, Decrement (Local0), MAX5)
                 }
-
                 Store (MG2B, MIN6)
                 Store (MG2L, LEN6)
                 Store (MG2L, Local0)
@@ -9876,7 +8990,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             }
         }
     }
-
     Name (WOTB, Zero)
     Name (WSSB, Zero)
     Name (WAXB, Zero)
@@ -9890,7 +9003,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
         {
             Sleep (0x0BB8)
         }
-
         Store (ASSB, WSSB)
         Store (AOTB, WOTB)
         Store (AAXB, WAXB)
@@ -9899,7 +9011,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
         Store (OSYS (), OSTP)
         Store (Zero, AAXB)
     }
-
     Method (_WAK, 1, NotSerialized)
     {
         ShiftLeft (Arg0, 0x04, DBG8)
@@ -9910,7 +9021,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             Store (WOTB, AOTB)
             Store (WAXB, AAXB)
         }
-
         If (DerefOf (Index (WAKP, Zero)))
         {
             Store (Zero, Index (WAKP, One))
@@ -9919,10 +9029,8 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
         {
             Store (Arg0, Index (WAKP, One))
         }
-
         Return (WAKP)
     }
-
     Name (_S0, Package (0x04)
     {
         Zero, 
@@ -9940,7 +9048,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             Zero
         })
     }
-
     If (SS3)
     {
         Name (_S3, Package (0x04)
@@ -9951,7 +9058,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             Zero
         })
     }
-
     If (SS4)
     {
         Name (_S4, Package (0x04)
@@ -9962,7 +9068,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             Zero
         })
     }
-
     Name (_S5, Package (0x04)
     {
         0x07, 
@@ -9979,7 +9084,6 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
             \_SB.PCI0.SBRG.SPTS (Arg0)
         }
     }
-
     Method (WAK, 1, NotSerialized)
     {
         \_SB.PCI0.SBRG.SIOW (Arg0)
@@ -9987,4 +9091,3 @@ DefinitionBlock ("/Users/julio/cw_dsdt/dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000"
         \_SB.PCI0.SBRG.SWAK (Arg0)
     }
 }
-
