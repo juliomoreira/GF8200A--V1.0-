@@ -2836,74 +2836,20 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                 Device (HPET)
                 {
                     Name (_HID, EisaId ("PNP0103"))
+                    Name (_CID, EisaId ("PNP0C01"))
+                    Name (_STA, 0x0F)
                     Name (_UID, Zero)
-                    Name (CRS0, ResourceTemplate ()
+                    Name (_CRS, ResourceTemplate ()
                     {
-                    })
-                    Name (CRS1, ResourceTemplate ()
-                    {
-                        Memory32Fixed (ReadWrite,
-                            0x00000000,         // Address Base
-                            0x00000000,         // Address Length
-                            _Y0B)
-                        IRQNoFlags (_Y0C)
+                        IRQNoFlags ()
                             {0}
                         IRQNoFlags ()
                             {8}
+                        Memory32Fixed (ReadOnly,
+                            0x00000000,         // Address Base
+                            0x00000000,         // Address Length
+                            )
                     })
-                    Method (_STA, 0, NotSerialized)
-                    {
-                        If (LEqual (OSFL (), Zero))
-                        {
-                            If (LEqual (NVID, 0x10DE))
-                            {
-                                Return (0x0F)
-                            }
-                            Else
-                            {
-                                Return (Zero)
-                            }
-                        }
-                        Else
-                        {
-                            Return (Zero)
-                        }
-                    }
-                    Method (_CRS, 0, NotSerialized)
-                    {
-                        CreateDWordField (CRS1, \_SB.PCI0.SBRG.HPET._Y0B._BAS, HPX1)
-                        CreateDWordField (CRS1, \_SB.PCI0.SBRG.HPET._Y0B._LEN, HPX2)
-                        CreateWordField (CRS1, \_SB.PCI0.SBRG.HPET._Y0C._INT, TIRQ)
-                        If (LEqual (NVID, 0x10DE))
-                        {
-                            Store (Zero, Local0)
-                            If (P2IR)
-                            {
-                                Store (0x02, Local0)
-                            }
-                            ShiftLeft (One, Local0, TIRQ)
-                            Store (SHPB, HPX1)
-                            Store (SHPL, HPX2)
-                            Return (CRS1)
-                        }
-                        Else
-                        {
-                            Return (CRS0)
-                        }
-                    }
-                    OperationRegion (CF29, PCI_Config, 0x74, One)
-                    Field (CF29, ByteAcc, NoLock, Preserve)
-                    {
-                            ,   1, 
-                            ,   1, 
-                        P2IR,   1
-                    }
-                    OperationRegion (HPTE, SystemMemory, SHPB, 0x04)
-                    Field (HPTE, ByteAcc, NoLock, Preserve)
-                    {
-                        Offset (0x02), 
-                        NVID,   16
-                    }
                 }
                 OperationRegion (LPDC, PCI_Config, 0xA0, 0x06)
                 Field (LPDC, ByteAcc, NoLock, Preserve)
@@ -3002,18 +2948,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                 Device (TMR)
                 {
                     Name (_HID, EisaId ("PNP0100"))
-                    Name (CRS0, ResourceTemplate ()
-                    {
-                        IO (Decode16,
-                            0x0040,             // Range Minimum
-                            0x0040,             // Range Maximum
-                            0x00,               // Alignment
-                            0x04,               // Length
-                            )
-                        IRQNoFlags ()
-                            {0}
-                    })
-                    Name (CRS1, ResourceTemplate ()
+                    Name (_CRS, ResourceTemplate ()
                     {
                         IO (Decode16,
                             0x0040,             // Range Minimum
@@ -3022,14 +2957,6 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                             0x04,               // Length
                             )
                     })
-                    Method (_CRS, 0, NotSerialized)
-                    {
-                        If (LEqual (^^HPET.NVID, 0x10DE))
-                        {
-                            Return (CRS1)
-                        }
-                        Return (CRS0)
-                    }
                 }
                 Device (RTC)
                 {
