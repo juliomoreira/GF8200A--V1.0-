@@ -3957,96 +3957,32 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
             Device (SATA)
             {
                 Name (_ADR, 0x00090000)
-                Device (PRI0)
+                OperationRegion (SACS, PCI_Config, 0x40, 0xC0)
+                Field (SACS, DWordAcc, NoLock, Preserve)
                 {
-                    Name (_ADR, Zero)
-                    Name (SPTM, Buffer (0x14)
-                    {
-                        /* 0000 */   0x78, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00,
-                        /* 0008 */   0x78, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00,
-                        /* 0010 */   0x17, 0x00, 0x00, 0x00
-                    })
-                    Method (_GTM, 0, NotSerialized)
-                    {
-                        Return (SPTM)
-                    }
-                    Method (_STM, 3, NotSerialized)
-                    {
-                        Store (Arg0, SPTM)
-                    }
-                    Device (MAST)
-                    {
-                        Name (_ADR, Zero)
-                        Method (_GTF, 0, NotSerialized)
-                        {
-                            Store (Buffer (0x07)
-                                {
-                                     0x03, 0x46, 0x00, 0x00, 0x00, 0xA0, 0xEF
-                                }, Local0)
-                            Return (Concatenate (Local0, FZTF))
-                        }
-                    }
-                    Device (SLAV)
-                    {
-                        Name (_ADR, One)
-                        Method (_GTF, 0, NotSerialized)
-                        {
-                            Store (Buffer (0x07)
-                                {
-                                     0x03, 0x46, 0x00, 0x00, 0x00, 0xB0, 0xEF
-                                }, Local0)
-                            Return (Concatenate (Local0, FZTF))
-                        }
-                    }
-                }
-                Device (SEC0)
-                {
-                    Name (_ADR, One)
-                    Name (SSTM, Buffer (0x14)
-                    {
-                        /* 0000 */   0x78, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00,
-                        /* 0008 */   0x78, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00,
-                        /* 0010 */   0x17, 0x00, 0x00, 0x00
-                    })
-                    Method (_GTM, 0, NotSerialized)
-                    {
-                        Return (SSTM)
-                    }
-                    Method (_STM, 3, NotSerialized)
-                    {
-                        Store (Arg0, SSTM)
-                    }
-                    Device (MAST)
-                    {
-                        Name (_ADR, Zero)
-                        Method (_GTF, 0, NotSerialized)
-                        {
-                            Store (Buffer (0x07)
-                                {
-                                     0x03, 0x46, 0x00, 0x00, 0x00, 0xA0, 0xEF
-                                }, Local0)
-                            Return (Concatenate (Local0, FZTF))
-                        }
-                    }
-                    Device (SLAV)
-                    {
-                        Name (_ADR, One)
-                        Method (_GTF, 0, NotSerialized)
-                        {
-                            Store (Buffer (0x07)
-                                {
-                                     0x03, 0x46, 0x00, 0x00, 0x00, 0xB0, 0xEF
-                                }, Local0)
-                            Return (Concatenate (Local0, FZTF))
-                        }
-                    }
-                }
-                Method (DRMP, 0, NotSerialized)
-                {
-                    Store (0x08, Local0)
-                    ShiftRight (CPB0, Local0, Local1)
-                    And (Local1, 0x3F, Local0)
-                    Return (Local0)
+                    PRIT,   16, 
+                    SECT,   16, 
+                    PSIT,   4, 
+                    SSIT,   4, 
+                            Offset (0x08), 
+                    SYNC,   4, 
+                            Offset (0x0A), 
+                    SDT0,   2, 
+                        ,   2, 
+                    SDT1,   2, 
+                            Offset (0x0B), 
+                    SDT2,   2, 
+                        ,   2, 
+                    SDT3,   2, 
+                            Offset (0x14), 
+                    ICR0,   4, 
+                    ICR1,   4, 
+                    ICR2,   4, 
+                    ICR3,   4, 
+                    ICR4,   4, 
+                    ICR5,   4, 
+                            Offset (0x50), 
+                    MAPV,   2
                 }
             }
             Device (P0P1)
