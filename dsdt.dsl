@@ -3816,7 +3816,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
             {
                 Name (_ADR, 0x00020000)
                 Name (_S1D, One)
-                Name (_UPS, Package (0x02)
+                Name (UPS1, Package (0x02)
                 {
                     0x03, 
                     0x03
@@ -3827,14 +3827,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                 }
                 Method (_PRW, 0, NotSerialized)
                 {
-                    Return (_UPS)
+                    Return (UPS1)
                 }
             }
             Device (OHC1)
             {
                 Name (_ADR, 0x00020001)
                 Name (_S1D, One)
-                Name (_UPS, Package (0x02)
+                Name (UPS1, Package (0x02)
                 {
                     0x03, 
                     0x03
@@ -3845,14 +3845,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                 }
                 Method (_PRW, 0, NotSerialized)
                 {
-                    Return (_UPS)
+                    Return (UPS1)
                 }
             }
             Device (EHC0)
             {
                 Name (_ADR, 0x00040000)
                 Name (_S1D, One)
-                Name (_UPS, Package (0x02)
+                Name (UPS1, Package (0x02)
                 {
                     0x03, 
                     0x03
@@ -3863,14 +3863,14 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                 }
                 Method (_PRW, 0, NotSerialized)
                 {
-                    Return (_UPS)
+                    Return (UPS1)
                 }
             }
             Device (EHC1)
             {
                 Name (_ADR, 0x00040001)
                 Name (_S1D, One)
-                Name (_UPS, Package (0x02)
+                Name (UPS1, Package (0x02)
                 {
                     0x03, 
                     0x03
@@ -3881,7 +3881,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                 }
                 Method (_PRW, 0, NotSerialized)
                 {
-                    Return (_UPS)
+                    Return (UPS1)
                 }
             }
             Device (NMAC)
@@ -6206,6 +6206,83 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                     }
                     Return (PR10)
                 }
+                Device (GFX0)
+                {
+                    Name (_ADR, Zero)
+                    Method (_DSM, 4, NotSerialized)
+                    {
+                        Store (Package (0x18)
+                            {
+                                "@0,compatible", 
+                                Buffer (0x0B)
+                                {
+                                    "NVDA,NVMac"
+                                }, 
+                                "@0,device_type", 
+                                Buffer (0x08)
+                                {
+                                    "display"
+                                }, 
+                                "@0,name", 
+                                Buffer (0x0F)
+                                {
+                                    "NVDA,Display-A"
+                                }, 
+                                "@1,compatible", 
+                                Buffer (0x0B)
+                                {
+                                    "NVDA,NVMac"
+                                }, 
+                                "@1,device_type", 
+                                Buffer (0x08)
+                                {
+                                    "display"
+                                }, 
+                                "@1,name", 
+                                Buffer (0x0F)
+                                {
+                                    "NVDA,Display-B"
+                                }, 
+                                "NVCAP", 
+                                Buffer (0x14)
+                                {
+                                    /* 0000 */   0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x00,
+                                    /* 0008 */   0x13, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0A,
+                                    /* 0010 */   0x00, 0x00, 0x00, 0x00
+                                }, 
+                                "NVPM", 
+                                Buffer (0x1C)
+                                {
+                                    /* 0000 */   0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                    /* 0008 */   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                    /* 0010 */   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                    /* 0018 */   0x00, 0x00, 0x00, 0x00
+                                }, 
+                                "VRAM,totalsize", 
+                                Buffer (0x04)
+                                {
+                                     0x00, 0x00, 0x00, 0x40
+                                }, 
+                                "device_type", 
+                                Buffer (0x0C)
+                                {
+                                    "NVDA,Parent"
+                                }, 
+                                "model", 
+                                Buffer (0x14)
+                                {
+                                    "EVGA GeForce GT 440"
+                                }, 
+                                "rom-revision", 
+                                Buffer (0x0F)
+                                {
+                                    "70.08.29.00.42"
+                                }
+                            }, Local0)
+                        DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
+                        Return (Local0)
+                    }
+                }
             }
             Device (BR11)
             {
@@ -6334,22 +6411,22 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
             }
             Method (_L0D, 0, NotSerialized)
             {
-                Notify (\_SB.PCI0.USB0, 0x02)
+                Notify (\_SB.PCI0.OHC0, 0x02)
                 Notify (\_SB.PWRB, 0x02)
             }
             Method (_L05, 0, NotSerialized)
             {
-                Notify (\_SB.PCI0.USB2, 0x02)
+                Notify (\_SB.PCI0.OHC1, 0x02)
                 Notify (\_SB.PWRB, 0x02)
             }
             Method (_L18, 0, NotSerialized)
             {
-                Notify (\_SB.PCI0.US15, 0x02)
+                Notify (\_SB.PCI0.EHC0, 0x02)
                 Notify (\_SB.PWRB, 0x02)
             }
             Method (_L17, 0, NotSerialized)
             {
-                Notify (\_SB.PCI0.US12, 0x02)
+                Notify (\_SB.PCI0.EHC1, 0x02)
                 Notify (\_SB.PWRB, 0x02)
             }
             Method (_L00, 0, NotSerialized)
