@@ -224,52 +224,7 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
     }
     Method (OSYS, 0, NotSerialized)
     {
-        Store (0x10, Local0)
-        If (CondRefOf (_OSI, Local1))
-        {
-            If (_OSI ("Windows 2000"))
-            {
-                Store (0x12, Local0)
-            }
-            If (_OSI ("Windows 2001"))
-            {
-                Store (0x13, Local0)
-            }
-            If (_OSI ("Windows 2001 SP1"))
-            {
-                Store (0x13, Local0)
-            }
-            If (_OSI ("Windows 2001 SP2"))
-            {
-                Store (0x13, Local0)
-            }
-            If (_OSI ("Windows 2001.1"))
-            {
-                Store (0x14, Local0)
-            }
-            If (_OSI ("Windows 2001.1 SP1"))
-            {
-                Store (0x14, Local0)
-            }
-            If (_OSI ("Windows 2006"))
-            {
-                Store (0x15, Local0)
-            }
-        }
-        Else
-        {
-            If (MCTH (_OS, "Microsoft Windows NT"))
-            {
-                Store (0x12, Local0)
-            }
-            Else
-            {
-                If (MCTH (_OS, "Microsoft WindowsME: Millennium Edition"))
-                {
-                    Store (0x11, Local0)
-                }
-            }
-        }
+        Store (0x15, Local0)
         Return (Local0)
     }
     Scope (_PR)
