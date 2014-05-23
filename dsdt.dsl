@@ -3031,37 +3031,19 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                         Return (CRS0)
                     }
                 }
-                Device (RTC0)
+                Device (RTC)
                 {
                     Name (_HID, EisaId ("PNP0B00"))
-                    Name (CRS0, ResourceTemplate ()
+                    Name (_CRS, ResourceTemplate ()
                     {
-                        IO (Decode16,
+                        IO (
+                            Decode16,
                             0x0070,             // Range Minimum
                             0x0070,             // Range Maximum
                             0x00,               // Alignment
                             0x02,               // Length
-                            )
-                        IRQNoFlags ()
-                            {8}
+                        )
                     })
-                    Name (CRS1, ResourceTemplate ()
-                    {
-                        IO (Decode16,
-                            0x0070,             // Range Minimum
-                            0x0070,             // Range Maximum
-                            0x00,               // Alignment
-                            0x02,               // Length
-                            )
-                    })
-                    Method (_CRS, 0, NotSerialized)
-                    {
-                        If (LEqual (^^HPET.NVID, 0x10DE))
-                        {
-                            Return (CRS1)
-                        }
-                        Return (CRS0)
-                    }
                 }
                 Device (^PCIE)
                 {
