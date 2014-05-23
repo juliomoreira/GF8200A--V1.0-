@@ -3812,84 +3812,76 @@ DefinitionBlock ("dsdt.aml", "DSDT", 1, "1AAAA", "1AAAA000", 0x00000000)
                     XVE7,   8
                 }
             }
-            Device (USB0)
+            Device (OHC0)
             {
                 Name (_ADR, 0x00020000)
                 Name (_S1D, One)
+                Name (_UPS, Package (0x02)
+                {
+                    0x03, 
+                    0x03
+                })
                 Method (_S3D, 0, NotSerialized)
                 {
-                    If (LOr (LEqual (OSFL (), One), LEqual (OSFL (), 0x02)))
-                    {
-                        Return (0x02)
-                    }
-                    Else
-                    {
-                        Return (0x03)
-                    }
+                    Return (0x03)
                 }
                 Method (_PRW, 0, NotSerialized)
                 {
-                    Return (GPRW (0x0D, 0x04))
+                    Return (_UPS)
                 }
             }
-            Device (USB2)
+            Device (OHC1)
             {
                 Name (_ADR, 0x00020001)
                 Name (_S1D, One)
+                Name (_UPS, Package (0x02)
+                {
+                    0x03, 
+                    0x03
+                })
                 Method (_S3D, 0, NotSerialized)
                 {
-                    If (LOr (LEqual (OSFL (), One), LEqual (OSFL (), 0x02)))
-                    {
-                        Return (0x02)
-                    }
-                    Else
-                    {
-                        Return (0x03)
-                    }
+                    Return (0x03)
                 }
                 Method (_PRW, 0, NotSerialized)
                 {
-                    Return (GPRW (0x05, 0x03))
+                    Return (_UPS)
                 }
             }
-            Device (US15)
+            Device (EHC0)
             {
                 Name (_ADR, 0x00040000)
                 Name (_S1D, One)
+                Name (_UPS, Package (0x02)
+                {
+                    0x03, 
+                    0x03
+                })
                 Method (_S3D, 0, NotSerialized)
                 {
-                    If (LOr (LEqual (OSFL (), One), LEqual (OSFL (), 0x02)))
-                    {
-                        Return (0x02)
-                    }
-                    Else
-                    {
                         Return (0x03)
-                    }
                 }
                 Method (_PRW, 0, NotSerialized)
                 {
-                    Return (GPRW (0x18, 0x04))
+                    Return (_UPS)
                 }
             }
-            Device (US12)
+            Device (EHC1)
             {
                 Name (_ADR, 0x00040001)
                 Name (_S1D, One)
+                Name (_UPS, Package (0x02)
+                {
+                    0x03, 
+                    0x03
+                })
                 Method (_S3D, 0, NotSerialized)
                 {
-                    If (LOr (LEqual (OSFL (), One), LEqual (OSFL (), 0x02)))
-                    {
-                        Return (0x02)
-                    }
-                    Else
-                    {
                         Return (0x03)
-                    }
                 }
                 Method (_PRW, 0, NotSerialized)
                 {
-                    Return (GPRW (0x17, 0x03))
+                    Return (_UPS)
                 }
             }
             Device (NMAC)
